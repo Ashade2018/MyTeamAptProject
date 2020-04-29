@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:league_app/src/ui/auth/splash_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -15,7 +16,6 @@ class MyApp extends StatelessWidget {
           ),
           primarySwatch: Colors.blue,
         ),
-        home: SplashScreen()
-    );
+        home: SplashScreen());
   }
 }
