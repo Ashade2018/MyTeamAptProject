@@ -4,6 +4,7 @@ import 'package:league_app/src/ui/auth/splash_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
