@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:league_app/src/data/app_colors.dart';
+import 'package:league_app/src/data/app_strings.dart';
 
 class SplashScreen extends StatelessWidget {
   @override
@@ -8,7 +9,7 @@ class SplashScreen extends StatelessWidget {
       backgroundColor: AppColors.primaryColor,
       body: Center(
         child: Text(
-          'LEAGUE APP',
+          AppStrings.appTitle.toUpperCase(),
           style: TextStyle(
               fontWeight: FontWeight.w900,
               fontStyle: FontStyle.italic,

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:league_app/src/data/app_strings.dart';
 
 Widget logInTitleSection = Padding(
   padding: EdgeInsets.only(bottom: 20.0),
@@ -13,7 +14,7 @@ Widget logInTitleSection = Padding(
       Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Text(
-          'Log In',
+          AppStrings.logIn,
           style: TextStyle(
             color: Colors.white,
             fontSize: 20,
@@ -27,7 +28,7 @@ Widget logInTitleSection = Padding(
 Widget logInWithTextSection = Padding(
   padding: EdgeInsets.symmetric(vertical: 10.0),
   child: Text(
-    'Log in with...',
+    AppStrings.logInWith,
     style: TextStyle(
       color: Colors.white,
       fontSize: 15,
@@ -78,7 +79,7 @@ Widget authenticationSignInButton = Padding(
         Expanded(
           flex: 7,
           child: _buildAuthButton(
-              label: 'facebook', imageAsset: 'assets/facebook_icon.png'),
+              label: AppStrings.facebook, imageAsset: 'assets/facebook_icon.png'),
         ),
         Expanded(
           child: SizedBox(),
@@ -86,7 +87,7 @@ Widget authenticationSignInButton = Padding(
         Expanded(
             flex: 7,
             child: _buildAuthButton(
-                label: 'Google', imageAsset: 'assets/google_icon.png'))
+                label: AppStrings.google, imageAsset: 'assets/google_icon.png'))
       ],
     ));
 
@@ -105,7 +106,7 @@ Widget dividerSection = Padding(
       Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Text(
-          'OR',
+          AppStrings.or.toUpperCase(),
           style: TextStyle(
             color: Colors.white,
             fontSize: 15,
@@ -127,7 +128,7 @@ Widget dividerSection = Padding(
 Widget emailAddressTextSection = Padding(
   padding: EdgeInsets.symmetric(vertical: 10),
   child: Text(
-    'Email Address',
+   AppStrings.emailAddress,
     style: TextStyle(
       color: Colors.white,
       fontSize: 15,
@@ -135,12 +136,12 @@ Widget emailAddressTextSection = Padding(
   ),
 );
 
-Widget textFormSectionEmail = _buildTextForm(hintText: 'Email Address', isTextObscure: false, textInputType: TextInputType.emailAddress);
+Widget textFormSectionEmail = _buildTextForm(hintText: AppStrings.emailAddress, isTextObscure: false, textInputType: TextInputType.emailAddress);
 
 Widget passwordTextSection = Padding(
   padding: EdgeInsets.symmetric(vertical: 10),
   child: Text(
-    'Password',
+    AppStrings.password,
     style: TextStyle(
       color: Colors.white,
       fontSize: 15,
@@ -148,7 +149,7 @@ Widget passwordTextSection = Padding(
   ),
 );
 
-Widget textFormSectionPassword = _buildTextForm(hintText: 'Password', isTextObscure: true, textInputType: TextInputType.visiblePassword );
+Widget textFormSectionPassword = _buildTextForm(hintText: AppStrings.password, isTextObscure: true, textInputType: TextInputType.visiblePassword );
 
 TextFormField _buildTextForm({TextInputType textInputType, String hintText, bool isTextObscure}) {
   return TextFormField(
@@ -172,7 +173,7 @@ Widget forgotPasswordTextSection = FlatButton(
     child: Align(
       alignment: Alignment.centerRight,
       child: Text(
-        'Forgot Password?',
+        AppStrings.forgotPassword,
         textAlign: TextAlign.right,
         style: TextStyle(
           color: Colors.white,
@@ -196,7 +197,7 @@ Widget logInButtonSection = Padding(
         child: Padding(
           padding: const EdgeInsets.all(15),
           child: Text(
-            'Log in',
+            AppStrings.logIn,
             style: TextStyle(
               color: Colors.white,
               fontSize: 15,

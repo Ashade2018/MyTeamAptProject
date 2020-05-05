@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:league_app/src/data/app_colors.dart';
+import 'package:league_app/src/data/app_strings.dart';
 
 Widget leagueAppTitleTextSection = Padding(
   padding: EdgeInsets.symmetric(vertical: 130),
   child: Text(
-    'LEAGUE APP',
+    AppStrings.appTitle.toUpperCase(),
     style: TextStyle(
         fontWeight: FontWeight.w900,
         fontStyle: FontStyle.italic,
@@ -26,7 +27,7 @@ Widget signUpButtonSection = Padding(
         child: Padding(
           padding: const EdgeInsets.all(15),
           child: Text(
-            'Sign Up',
+            AppStrings.signUp,
             style: TextStyle(
               color: Colors.white,
               fontSize: 15,
@@ -41,7 +42,7 @@ Widget signUpButtonSection = Padding(
 Widget alreadyHaveAnAccountTextSection = Padding(
   padding: EdgeInsets.symmetric(vertical: 5),
   child: Text(
-    'Already have an account?',
+    AppStrings.alreadyHaveAnAccount,
     style: TextStyle(
       color: Colors.white,
       fontSize: 12,
@@ -60,7 +61,7 @@ Widget logInButtonSection = FlatButton(
       child: Padding(
         padding: const EdgeInsets.all(15),
         child: Text(
-          'Log In',
+          AppStrings.logIn,
           style: TextStyle(
             color: Colors.black,
             fontSize: 15,
