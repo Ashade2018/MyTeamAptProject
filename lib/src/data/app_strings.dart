@@ -9,5 +9,7 @@ class AppStrings {
   static const String or = 'Or';
   static const String emailAddress = 'Email Address';
   static const String password = 'Password';
-  static const String forgotPassword = 'Forgot Password?';
+  static const String forgotPasswordButtonText = 'Forgot password?';
+  static const String forgotPassword= 'Forgot Password';
+  static const String resetPassword = 'Reset Pasword';
 }

@@ -173,7 +173,7 @@ Widget forgotPasswordTextSection = FlatButton(
     child: Align(
       alignment: Alignment.centerRight,
       child: Text(
-        AppStrings.forgotPassword,
+        AppStrings.forgotPasswordButtonText,
         textAlign: TextAlign.right,
         style: TextStyle(
           color: Colors.white,
