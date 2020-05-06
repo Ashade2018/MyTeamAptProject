@@ -12,4 +12,7 @@ class AppStrings {
   static const String forgotPasswordButtonText = 'Forgot password?';
   static const String forgotPassword= 'Forgot Password';
   static const String resetPassword = 'Reset Pasword';
+  static const String passwordResetScreenTitle = 'Password Reset';
+  static const String passwordResetScreenInstruction = 'If account exists, an email will be sent with further instructions';
+  static const String backToLogin = 'Back To Login';
 }
