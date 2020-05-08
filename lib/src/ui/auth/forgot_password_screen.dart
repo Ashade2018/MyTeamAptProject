@@ -6,27 +6,7 @@ import 'package:league_app/src/ui/auth/reset_password_screen.dart';
 
 
 class ForgotPasswordScreen extends StatelessWidget {
-  final Widget _forgotPasswordTitleSection = Padding(
-    padding: EdgeInsets.only(bottom: 20.0),
-    child: Row(
-      children: <Widget>[
-        Icon(
-          Icons.arrow_back,
-          color: Colors.white,
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Text(
-            AppStrings.forgotPassword,
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 20,
-            ),
-          ),
-        ),
-      ],
-    ),
-  );
+
 
   final Widget _emailAddressTextSection = Padding(
     padding: EdgeInsets.only(bottom: 10, top: 80),
@@ -80,6 +60,7 @@ class ForgotPasswordScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(backgroundColor: AppColors.backgroundColor,title: Text(AppStrings.forgotPassword),),
       body: Container(
         constraints: BoxConstraints.expand(),
         color: AppColors.backgroundColor,
@@ -89,7 +70,6 @@ class ForgotPasswordScreen extends StatelessWidget {
             child: ListView(
               shrinkWrap: true,
               children: <Widget>[
-                _forgotPasswordTitleSection,
                 _emailAddressTextSection,
                 _emailAddressTextFormSection,
                 _buildResetPasswordButtonSection(context)

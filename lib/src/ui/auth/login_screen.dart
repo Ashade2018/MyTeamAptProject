@@ -3,29 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:league_app/src/data/app_strings.dart';
 import 'package:league_app/src/ui/auth/forgot_password_screen.dart';
-
+import 'package:league_app/src/data/app_colors.dart';
 class LoginScreen extends StatelessWidget {
-  final Widget _logInTitleSection = Padding(
-    padding: EdgeInsets.only(bottom: 20.0),
-    child: Row(
-      children: <Widget>[
-        Icon(
-          Icons.arrow_back,
-          color: Colors.white,
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Text(
-            AppStrings.logIn,
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 20,
-            ),
-          ),
-        ),
-      ],
-    ),
-  );
+
 
   final Widget _logInWithTextSection = Padding(
     padding: EdgeInsets.symmetric(vertical: 10.0),
@@ -228,6 +208,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(backgroundColor: AppColors.backgroundColor,title: Text(AppStrings.logIn)),
       body: Container(
         constraints: BoxConstraints.expand(),
         color: Color(0xFF323031),
@@ -237,7 +218,6 @@ class LoginScreen extends StatelessWidget {
             child: ListView(
               shrinkWrap: true,
               children: <Widget>[
-                _logInTitleSection,
                 _logInWithTextSection,
                 _authenticationSignInButton(),
                 _dividerSection,
