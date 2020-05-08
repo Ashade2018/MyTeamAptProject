@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:league_app/src/data/app_colors.dart';
 import 'package:league_app/src/data/app_strings.dart';
-
+import 'package:league_app/src/ui/auth/login_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
- final Widget _leagueAppTitleTextSection = Padding(
+  final Widget _leagueAppTitleTextSection = Padding(
     padding: EdgeInsets.symmetric(vertical: 130),
     child: Text(
       AppStrings.appTitle.toUpperCase(),
@@ -16,7 +16,7 @@ class WelcomeScreen extends StatelessWidget {
     ),
   );
 
- final Widget _signUpButtonSection = Padding(
+  final Widget _signUpButtonSection = Padding(
     padding: EdgeInsets.symmetric(vertical: 30),
     child: FlatButton(
       padding: EdgeInsets.all(0),
@@ -41,7 +41,7 @@ class WelcomeScreen extends StatelessWidget {
     ),
   );
 
- final Widget _alreadyHaveAnAccountTextSection = Padding(
+  final Widget _alreadyHaveAnAccountTextSection = Padding(
     padding: EdgeInsets.symmetric(vertical: 5),
     child: Text(
       AppStrings.alreadyHaveAnAccount,
@@ -52,27 +52,32 @@ class WelcomeScreen extends StatelessWidget {
     ),
   );
 
- final Widget _logInButtonSection = FlatButton(
-    padding: EdgeInsets.all(0),
-    onPressed: null,
-    child: Container(
-      decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.all(Radius.circular(5.0))),
-      child: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(15),
-          child: Text(
-            AppStrings.logIn,
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 15,
+  FlatButton _buildLogInButtonSection(BuildContext context) {
+    return FlatButton(
+      padding: EdgeInsets.all(0),
+      onPressed: () {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => LoginScreen()));
+      },
+      child: Container(
+        decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.all(Radius.circular(5.0))),
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(15),
+            child: Text(
+              AppStrings.logIn,
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 15,
+              ),
             ),
           ),
         ),
       ),
-    ),
-  );
+    );
+  }
 
 
   @override
@@ -89,7 +94,7 @@ class WelcomeScreen extends StatelessWidget {
                 _leagueAppTitleTextSection,
                 _signUpButtonSection,
                 _alreadyHaveAnAccountTextSection,
-                _logInButtonSection,
+                _buildLogInButtonSection(context),
               ],
             ),
           ),
