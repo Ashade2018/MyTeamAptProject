@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:league_app/src/data/app_strings.dart';
+import 'package:league_app/src/ui/auth/forgot_password_screen.dart';
 
 class LoginScreen extends StatelessWidget {
   final Widget _logInTitleSection = Padding(
@@ -140,7 +141,10 @@ class LoginScreen extends StatelessWidget {
     ),
   );
 
-  Widget _textFormSectionEmail() => _buildTextForm(hintText: AppStrings.emailAddress, isTextObscure: false, textInputType: TextInputType.emailAddress);
+  Widget _textFormSectionEmail() => _buildTextForm(
+      hintText: AppStrings.emailAddress,
+      isTextObscure: false,
+      textInputType: TextInputType.emailAddress);
 
   final Widget _passwordTextSection = Padding(
     padding: EdgeInsets.symmetric(vertical: 10),
@@ -153,7 +157,10 @@ class LoginScreen extends StatelessWidget {
     ),
   );
 
-  Widget _textFormSectionPassword() => _buildTextForm(hintText: AppStrings.password, isTextObscure: true, textInputType: TextInputType.visiblePassword);
+  Widget _textFormSectionPassword() => _buildTextForm(
+      hintText: AppStrings.password,
+      isTextObscure: true,
+      textInputType: TextInputType.visiblePassword);
 
   TextFormField _buildTextForm(
       {TextInputType textInputType, String hintText, bool isTextObscure}) {
@@ -169,24 +176,29 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-  final Widget _forgotPasswordTextSection = FlatButton(
-    onPressed: null,
-    padding: EdgeInsets.all(0),
-    child: Padding(
-      padding: EdgeInsets.symmetric(vertical: 10),
-      child: Align(
-        alignment: Alignment.centerRight,
-        child: Text(
-          AppStrings.forgotPassword,
-          textAlign: TextAlign.right,
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 12,
+  Widget _buildForgotPasswordClickableTextSection(BuildContext context) {
+    return FlatButton(
+      onPressed: () {
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => ForgotPasswordScreen()));
+      },
+      padding: EdgeInsets.all(0),
+      child: Padding(
+        padding: EdgeInsets.symmetric(vertical: 10),
+        child: Align(
+          alignment: Alignment.centerRight,
+          child: Text(
+            AppStrings.forgotPassword,
+            textAlign: TextAlign.right,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 12,
+            ),
           ),
         ),
       ),
-    ),
-  );
+    );
+  }
 
   final Widget _logInButtonSection = Padding(
     padding: EdgeInsets.symmetric(vertical: 10),
@@ -233,7 +245,7 @@ class LoginScreen extends StatelessWidget {
                 _textFormSectionEmail(),
                 _passwordTextSection,
                 _textFormSectionPassword(),
-                _forgotPasswordTextSection,
+                _buildForgotPasswordClickableTextSection(context),
                 _logInButtonSection,
               ],
             ),
