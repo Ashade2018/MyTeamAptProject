@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:league_app/src/data/app_colors.dart';
 import 'package:league_app/src/data/app_strings.dart';
+import 'package:league_app/src/ui/auth/reset_password_screen.dart';
+
 
 class ForgotPasswordScreen extends StatelessWidget {
   final Widget _forgotPasswordTitleSection = Padding(
@@ -48,11 +50,14 @@ class ForgotPasswordScreen extends StatelessWidget {
     ),
   );
 
-  final Widget _resetPasswordButtonSection = Padding(
+   Widget _buildResetPasswordButtonSection(BuildContext context) => Padding(
     padding: EdgeInsets.symmetric(vertical: 40),
     child: FlatButton(
       padding: EdgeInsets.all(0),
-      onPressed: null,
+      onPressed: () {
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => ResetPasswordScreen()));
+      },
       child: Container(
         decoration: BoxDecoration(
             color: AppColors.primaryColor,
@@ -72,7 +77,6 @@ class ForgotPasswordScreen extends StatelessWidget {
       ),
     ),
   );
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -88,7 +92,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                 _forgotPasswordTitleSection,
                 _emailAddressTextSection,
                 _emailAddressTextFormSection,
-                _resetPasswordButtonSection
+                _buildResetPasswordButtonSection(context)
               ],
             ),
           ),
