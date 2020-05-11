@@ -7,7 +7,7 @@ import 'package:league_app/src/data/app_colors.dart';
 class LoginScreen extends StatelessWidget {
 
 
- Padding _buildLogInWithTextSection() { return Padding(
+ Widget _buildLogInWithTextSection() { return Padding(
     padding: EdgeInsets.symmetric(vertical: 10.0),
     child: Text(
       AppStrings.logInWith,
@@ -18,7 +18,7 @@ class LoginScreen extends StatelessWidget {
     ),
   );}
 
-  FlatButton _buildAuthButton({String imageAsset, String label}) {
+ Widget _buildAuthButton({String imageAsset, String label}) {
     return FlatButton(
       padding: EdgeInsets.all(0),
       onPressed: () {},
@@ -76,7 +76,7 @@ class LoginScreen extends StatelessWidget {
         ),
       );}
 
-  Padding _buildDividerSection() {return Padding(
+  Widget _buildDividerSection() {return Padding(
     padding: EdgeInsets.symmetric(vertical: 20.0),
     child: Row(
       children: <Widget>[
@@ -110,7 +110,7 @@ class LoginScreen extends StatelessWidget {
     ),
   );}
 
-  Padding _buildEmailAddressTextSection() {return Padding(
+  Widget _buildEmailAddressTextSection() {return Padding(
     padding: EdgeInsets.symmetric(vertical: 10),
     child: Text(
       AppStrings.emailAddress,
@@ -126,7 +126,7 @@ class LoginScreen extends StatelessWidget {
       isTextObscure: false,
       textInputType: TextInputType.emailAddress);
 
- Padding _buildPasswordTextSection() {return Padding(
+ Widget _buildPasswordTextSection() {return Padding(
     padding: EdgeInsets.symmetric(vertical: 10),
     child: Text(
       AppStrings.password,
@@ -142,7 +142,7 @@ class LoginScreen extends StatelessWidget {
       isTextObscure: true,
       textInputType: TextInputType.visiblePassword);
 
-  TextFormField _buildTextForm(
+  Widget _buildTextForm(
       {TextInputType textInputType, String hintText, bool isTextObscure}) {
     return TextFormField(
       obscureText: isTextObscure,
@@ -180,7 +180,7 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-  Padding _buildLogInButtonSection() {return Padding(
+  Widget _buildLogInButtonSection() {return Padding(
     padding: EdgeInsets.symmetric(vertical: 10),
     child: FlatButton(
       padding: EdgeInsets.all(0),
