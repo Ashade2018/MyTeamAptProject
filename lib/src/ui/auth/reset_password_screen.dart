@@ -5,7 +5,7 @@ import 'package:league_app/src/data/app_strings.dart';
 import 'package:league_app/src/ui/auth/login_screen.dart';
 
 class ResetPasswordScreen extends StatelessWidget {
-  Padding _buildPasswordResetInstructionsTextSection() {
+ Widget _buildPasswordResetInstructionsTextSection() {
     return Padding(
       padding: EdgeInsets.only(top: 80),
       child: Text(
