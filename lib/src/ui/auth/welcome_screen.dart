@@ -4,7 +4,7 @@ import 'package:league_app/src/data/app_strings.dart';
 import 'package:league_app/src/ui/auth/login_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
-  final Widget _leagueAppTitleTextSection = Padding(
+  Widget _buildLeagueAppTitleTextSection() {return Padding(
     padding: EdgeInsets.symmetric(vertical: 130),
     child: Text(
       AppStrings.appTitle.toUpperCase(),
@@ -14,9 +14,9 @@ class WelcomeScreen extends StatelessWidget {
           fontSize: 32.0,
           color: Colors.white),
     ),
-  );
+  );}
 
-  final Widget _signUpButtonSection = Padding(
+ Widget _buildSignUpButtonSection() {return Padding(
     padding: EdgeInsets.symmetric(vertical: 30),
     child: FlatButton(
       padding: EdgeInsets.all(0),
@@ -39,9 +39,9 @@ class WelcomeScreen extends StatelessWidget {
         ),
       ),
     ),
-  );
+  );}
 
-  final Widget _alreadyHaveAnAccountTextSection = Padding(
+  Widget _buildAlreadyHaveAnAccountTextSection() {return Padding(
     padding: EdgeInsets.symmetric(vertical: 5),
     child: Text(
       AppStrings.alreadyHaveAnAccount,
@@ -50,9 +50,9 @@ class WelcomeScreen extends StatelessWidget {
         fontSize: 12,
       ),
     ),
-  );
+  );}
 
-  FlatButton _buildLogInButtonSection(BuildContext context) {
+  Widget _buildLogInButtonSection(BuildContext context) {
     return FlatButton(
       padding: EdgeInsets.all(0),
       onPressed: () {
@@ -92,9 +92,9 @@ class WelcomeScreen extends StatelessWidget {
             padding: const EdgeInsets.all(20.0),
             child: Column(
               children: <Widget>[
-                _leagueAppTitleTextSection,
-                _signUpButtonSection,
-                _alreadyHaveAnAccountTextSection,
+                _buildLeagueAppTitleTextSection(),
+                _buildSignUpButtonSection(),
+                _buildAlreadyHaveAnAccountTextSection(),
                 _buildLogInButtonSection(context),
               ],
             ),

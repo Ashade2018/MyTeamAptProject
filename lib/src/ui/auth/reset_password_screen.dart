@@ -5,17 +5,19 @@ import 'package:league_app/src/data/app_strings.dart';
 import 'package:league_app/src/ui/auth/login_screen.dart';
 
 class ResetPasswordScreen extends StatelessWidget {
-  final Widget _passwordResetInstructionsTextSection = Padding(
-    padding: EdgeInsets.only(top: 80),
-    child: Text(
-      AppStrings.passwordResetScreenInstruction,
-      textAlign: TextAlign.center,
-      style: TextStyle(
-        color: Colors.white,
-        fontSize: 15,
+ Widget _buildPasswordResetInstructionsTextSection() {
+    return Padding(
+      padding: EdgeInsets.only(top: 80),
+      child: Text(
+        AppStrings.passwordResetScreenInstruction,
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 15,
+        ),
       ),
-    ),
-  );
+    );
+  }
 
   Widget _buildBackToLoginButtonSection(BuildContext context) => Padding(
         padding: EdgeInsets.symmetric(vertical: 40),
@@ -59,7 +61,7 @@ class ResetPasswordScreen extends StatelessWidget {
           padding: const EdgeInsets.all(20.0),
           child: Column(
             children: <Widget>[
-              _passwordResetInstructionsTextSection,
+              _buildPasswordResetInstructionsTextSection(),
               _buildBackToLoginButtonSection(context),
             ],
           ),

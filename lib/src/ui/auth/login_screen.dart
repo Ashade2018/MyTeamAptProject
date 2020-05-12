@@ -7,7 +7,7 @@ import 'package:league_app/src/data/app_colors.dart';
 class LoginScreen extends StatelessWidget {
 
 
-  final Widget _logInWithTextSection = Padding(
+ Widget _buildLogInWithTextSection() { return Padding(
     padding: EdgeInsets.symmetric(vertical: 10.0),
     child: Text(
       AppStrings.logInWith,
@@ -16,9 +16,9 @@ class LoginScreen extends StatelessWidget {
         fontSize: 15,
       ),
     ),
-  );
+  );}
 
-  FlatButton _buildAuthButton({String imageAsset, String label}) {
+ Widget _buildAuthButton({String imageAsset, String label}) {
     return FlatButton(
       padding: EdgeInsets.all(0),
       onPressed: () {},
@@ -53,7 +53,7 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-  Widget _authenticationSignInButton() => Padding(
+  Widget _authenticationSignInButton() {return Padding(
         padding: EdgeInsets.symmetric(vertical: 10.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -74,9 +74,9 @@ class LoginScreen extends StatelessWidget {
                     imageAsset: 'assets/google_icon.png'))
           ],
         ),
-      );
+      );}
 
-  final Widget _dividerSection = Padding(
+  Widget _buildDividerSection() {return Padding(
     padding: EdgeInsets.symmetric(vertical: 20.0),
     child: Row(
       children: <Widget>[
@@ -108,9 +108,9 @@ class LoginScreen extends StatelessWidget {
         ),
       ],
     ),
-  );
+  );}
 
-  final Widget _emailAddressTextSection = Padding(
+  Widget _buildEmailAddressTextSection() {return Padding(
     padding: EdgeInsets.symmetric(vertical: 10),
     child: Text(
       AppStrings.emailAddress,
@@ -119,14 +119,14 @@ class LoginScreen extends StatelessWidget {
         fontSize: 15,
       ),
     ),
-  );
+  );}
 
   Widget _textFormSectionEmail() => _buildTextForm(
       hintText: AppStrings.emailAddress,
       isTextObscure: false,
       textInputType: TextInputType.emailAddress);
 
-  final Widget _passwordTextSection = Padding(
+ Widget _buildPasswordTextSection() {return Padding(
     padding: EdgeInsets.symmetric(vertical: 10),
     child: Text(
       AppStrings.password,
@@ -135,14 +135,14 @@ class LoginScreen extends StatelessWidget {
         fontSize: 15,
       ),
     ),
-  );
+  );}
 
   Widget _textFormSectionPassword() => _buildTextForm(
       hintText: AppStrings.password,
       isTextObscure: true,
       textInputType: TextInputType.visiblePassword);
 
-  TextFormField _buildTextForm(
+  Widget _buildTextForm(
       {TextInputType textInputType, String hintText, bool isTextObscure}) {
     return TextFormField(
       obscureText: isTextObscure,
@@ -180,7 +180,7 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-  final Widget _logInButtonSection = Padding(
+  Widget _buildLogInButtonSection() {return Padding(
     padding: EdgeInsets.symmetric(vertical: 10),
     child: FlatButton(
       padding: EdgeInsets.all(0),
@@ -203,7 +203,7 @@ class LoginScreen extends StatelessWidget {
         ),
       ),
     ),
-  );
+  );}
 
   @override
   Widget build(BuildContext context) {
@@ -218,15 +218,15 @@ class LoginScreen extends StatelessWidget {
             child: ListView(
               shrinkWrap: true,
               children: <Widget>[
-                _logInWithTextSection,
+                _buildLogInWithTextSection(),
                 _authenticationSignInButton(),
-                _dividerSection,
-                _emailAddressTextSection,
+                _buildDividerSection(),
+                _buildEmailAddressTextSection(),
                 _textFormSectionEmail(),
-                _passwordTextSection,
+                _buildPasswordTextSection(),
                 _textFormSectionPassword(),
                 _buildForgotPasswordClickableTextSection(context),
-                _logInButtonSection,
+                _buildLogInButtonSection(),
               ],
             ),
           ),
