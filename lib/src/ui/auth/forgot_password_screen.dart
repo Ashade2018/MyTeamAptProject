@@ -8,7 +8,7 @@ import 'package:league_app/src/ui/auth/reset_password_screen.dart';
 class ForgotPasswordScreen extends StatelessWidget {
 
 
-  final Widget _emailAddressTextSection = Padding(
+ Padding _buildEmailAddressTextSection() {return Padding(
     padding: EdgeInsets.only(bottom: 10, top: 80),
     child: Text(
       AppStrings.emailAddress,
@@ -18,8 +18,8 @@ class ForgotPasswordScreen extends StatelessWidget {
       ),
     ),
   );
-
-  final Widget _emailAddressTextFormSection = TextFormField(
+}
+ TextFormField _buildEmailAddressTextFormSection(){ return TextFormField(
     obscureText: false,
     keyboardType: TextInputType.emailAddress,
     decoration: InputDecoration(
@@ -28,7 +28,7 @@ class ForgotPasswordScreen extends StatelessWidget {
       hintText: AppStrings.emailAddress,
       border: OutlineInputBorder(),
     ),
-  );
+  );}
 
    Widget _buildResetPasswordButtonSection(BuildContext context) => Padding(
     padding: EdgeInsets.symmetric(vertical: 40),
@@ -70,8 +70,8 @@ class ForgotPasswordScreen extends StatelessWidget {
             child: ListView(
               shrinkWrap: true,
               children: <Widget>[
-                _emailAddressTextSection,
-                _emailAddressTextFormSection,
+                _buildEmailAddressTextSection(),
+                _buildEmailAddressTextFormSection(),
                 _buildResetPasswordButtonSection(context)
               ],
             ),
