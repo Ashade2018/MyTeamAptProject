@@ -4,21 +4,23 @@ import 'package:flutter/painting.dart';
 import 'package:league_app/src/data/app_strings.dart';
 import 'package:league_app/src/ui/auth/forgot_password_screen.dart';
 import 'package:league_app/src/data/app_colors.dart';
+import 'package:league_app/src/ui/main/home.dart';
+
 class LoginScreen extends StatelessWidget {
-
-
- Widget _buildLogInWithTextSection() { return Padding(
-    padding: EdgeInsets.symmetric(vertical: 10.0),
-    child: Text(
-      AppStrings.logInWith,
-      style: TextStyle(
-        color: Colors.white,
-        fontSize: 15,
+  Widget _buildLogInWithTextSection() {
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 10.0),
+      child: Text(
+        AppStrings.logInWith,
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 15,
+        ),
       ),
-    ),
-  );}
+    );
+  }
 
- Widget _buildAuthButton({String imageAsset, String label}) {
+  Widget _buildAuthButton({String imageAsset, String label}) {
     return FlatButton(
       padding: EdgeInsets.all(0),
       onPressed: () {},
@@ -53,89 +55,97 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-  Widget _authenticationSignInButton() {return Padding(
-        padding: EdgeInsets.symmetric(vertical: 10.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Expanded(
+  Widget _authenticationSignInButton() {
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 10.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          Expanded(
+            flex: 7,
+            child: _buildAuthButton(
+                label: AppStrings.facebook,
+                imageAsset: 'assets/facebook_icon.png'),
+          ),
+          Expanded(
+            child: SizedBox(),
+          ),
+          Expanded(
               flex: 7,
               child: _buildAuthButton(
-                  label: AppStrings.facebook,
-                  imageAsset: 'assets/facebook_icon.png'),
-            ),
-            Expanded(
-              child: SizedBox(),
-            ),
-            Expanded(
-                flex: 7,
-                child: _buildAuthButton(
-                    label: AppStrings.google,
-                    imageAsset: 'assets/google_icon.png'))
-          ],
-        ),
-      );}
-
-  Widget _buildDividerSection() {return Padding(
-    padding: EdgeInsets.symmetric(vertical: 20.0),
-    child: Row(
-      children: <Widget>[
-        Expanded(
-          flex: 4,
-          child: Divider(
-            indent: 100,
-            thickness: 2,
-            color: Colors.grey,
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: Text(
-            AppStrings.or.toUpperCase(),
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 15,
-            ),
-          ),
-        ),
-        Expanded(
-          flex: 4,
-          child: Divider(
-            endIndent: 100,
-            thickness: 2,
-            color: Colors.grey,
-          ),
-        ),
-      ],
-    ),
-  );}
-
-  Widget _buildEmailAddressTextSection() {return Padding(
-    padding: EdgeInsets.symmetric(vertical: 10),
-    child: Text(
-      AppStrings.emailAddress,
-      style: TextStyle(
-        color: Colors.white,
-        fontSize: 15,
+                  label: AppStrings.google,
+                  imageAsset: 'assets/google_icon.png'))
+        ],
       ),
-    ),
-  );}
+    );
+  }
+
+  Widget _buildDividerSection() {
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 20.0),
+      child: Row(
+        children: <Widget>[
+          Expanded(
+            flex: 4,
+            child: Divider(
+              indent: 100,
+              thickness: 2,
+              color: Colors.grey,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: Text(
+              AppStrings.or.toUpperCase(),
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 15,
+              ),
+            ),
+          ),
+          Expanded(
+            flex: 4,
+            child: Divider(
+              endIndent: 100,
+              thickness: 2,
+              color: Colors.grey,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildEmailAddressTextSection() {
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 10),
+      child: Text(
+        AppStrings.emailAddress,
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 15,
+        ),
+      ),
+    );
+  }
 
   Widget _textFormSectionEmail() => _buildTextForm(
       hintText: AppStrings.emailAddress,
       isTextObscure: false,
       textInputType: TextInputType.emailAddress);
 
- Widget _buildPasswordTextSection() {return Padding(
-    padding: EdgeInsets.symmetric(vertical: 10),
-    child: Text(
-      AppStrings.password,
-      style: TextStyle(
-        color: Colors.white,
-        fontSize: 15,
+  Widget _buildPasswordTextSection() {
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 10),
+      child: Text(
+        AppStrings.password,
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 15,
+        ),
       ),
-    ),
-  );}
+    );
+  }
 
   Widget _textFormSectionPassword() => _buildTextForm(
       hintText: AppStrings.password,
@@ -159,8 +169,8 @@ class LoginScreen extends StatelessWidget {
   Widget _buildForgotPasswordClickableTextSection(BuildContext context) {
     return FlatButton(
       onPressed: () {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => ForgotPasswordScreen()));
+        Navigator.pushAndRemoveUntil(context,
+            MaterialPageRoute(builder: (context) => ForgotPasswordScreen()), (_)=> false);
       },
       padding: EdgeInsets.all(0),
       child: Padding(
@@ -180,35 +190,42 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildLogInButtonSection() {return Padding(
-    padding: EdgeInsets.symmetric(vertical: 10),
-    child: FlatButton(
-      padding: EdgeInsets.all(0),
-      onPressed: null,
-      child: Container(
-        decoration: BoxDecoration(
-            color: Color(0xFF177E89),
-            borderRadius: BorderRadius.all(Radius.circular(5.0))),
-        child: Center(
-          child: Padding(
-            padding: const EdgeInsets.all(15),
-            child: Text(
-              AppStrings.logIn,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 15,
+  Widget _buildLogInButtonSection(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 10),
+      child: FlatButton(
+        padding: EdgeInsets.all(0),
+        onPressed: () {
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => HomeScreen()));
+        },
+        child: Container(
+          decoration: BoxDecoration(
+              color: Color(0xFF177E89),
+              borderRadius: BorderRadius.all(Radius.circular(5.0))),
+          child: Center(
+            child: Padding(
+              padding: const EdgeInsets.all(15),
+              child: Text(
+                AppStrings.logIn,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 15,
+                ),
               ),
             ),
           ),
         ),
       ),
-    ),
-  );}
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(backgroundColor: AppColors.backgroundColor,title: Text(AppStrings.logIn)),
+      appBar: AppBar(
+          backgroundColor: AppColors.backgroundColor,
+          title: Text(AppStrings.logIn)),
       body: Container(
         constraints: BoxConstraints.expand(),
         color: Color(0xFF323031),
@@ -226,7 +243,7 @@ class LoginScreen extends StatelessWidget {
                 _buildPasswordTextSection(),
                 _textFormSectionPassword(),
                 _buildForgotPasswordClickableTextSection(context),
-                _buildLogInButtonSection(),
+                _buildLogInButtonSection(context),
               ],
             ),
           ),
