@@ -15,4 +15,6 @@ class AppStrings {
   static const String passwordResetScreenTitle = 'Password Reset';
   static const String passwordResetScreenInstruction = 'If account exists, an email will be sent with further instructions';
   static const String backToLogin = 'Back To Login';
+  static const String signUpWith='Sign up with...';
+  static const String confirmPassword='Confirm Password';
 }
