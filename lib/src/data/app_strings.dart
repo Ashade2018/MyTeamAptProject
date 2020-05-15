@@ -17,4 +17,5 @@ class AppStrings {
   static const String backToLogin = 'Back To Login';
   static const String signUpWith='Sign up with...';
   static const String confirmPassword='Confirm Password';
+  static const String signUpSnackbarErrorMessge='Could not sign up.';
 }

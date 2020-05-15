@@ -2,8 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:league_app/src/data/app_colors.dart';
 import 'package:league_app/src/data/app_strings.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:league_app/src/ui/main/home.dart';
+import 'package:http/http.dart';
+import 'package:league_app/src/services/sign_up_service.dart';
 
-class SignUpScreen extends StatelessWidget {
+class SignUpScreen extends StatefulWidget {
+  @override
+  _SignUpScreenState createState() => _SignUpScreenState();
+}
+
+class _SignUpScreenState extends State<SignUpScreen> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  bool _isLoading = false;
+
   Widget _buildSignUpWithTextSection() {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 10.0),
@@ -186,7 +198,7 @@ class SignUpScreen extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 10),
       child: FlatButton(
         padding: EdgeInsets.all(0),
-        onPressed: null,
+        onPressed: (){_signUp(context);},
         child: Container(
           decoration: BoxDecoration(
               color: Color(0xFF177E89),
@@ -208,39 +220,80 @@ class SignUpScreen extends StatelessWidget {
     );
   }
 
+  Future<void> _signUp(BuildContext context) async {
+
+    setState(() {
+      _isLoading = true;
+    });
+
+    Client client = Client();
+    SignUpService signUpService = SignUpService(client);
+    bool signUpStatus = await signUpService.signUp();
+
+    setState(() {
+      _isLoading = false;
+    });
+
+    if (signUpStatus) {
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) => HomeScreen()));
+    } else {
+      final SnackBar snackBar = SnackBar(
+          content: Text(
+            AppStrings.signUpSnackbarErrorMessge,
+            style: TextStyle(color: Colors.black),
+          ),
+          backgroundColor: Colors.white);
+      _scaffoldKey.currentState.showSnackBar(snackBar);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          backgroundColor: AppColors.backgroundColor,
-          title: Text(AppStrings.signUp)),
-      body: Container(
-        constraints: BoxConstraints.expand(),
-        color: AppColors.backgroundColor,
-        child: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: ListView(
-              shrinkWrap: true,
-              children: <Widget>[
-                _buildSignUpWithTextSection(),
-                _authenticationSignUpButton(),
-                _buildDividerSection(),
-                _buildEmailAddressTextSection(),
-                _textFormSectionEmail(),
-                _buildPasswordTextSection(),
-                _textFormSectionPassword(),
-                _buildConfirmPasswordTextSection(),
-                _textFormSectionConfirmPassword(),
-                SizedBox(
-                  height: 20.0,
+        key: _scaffoldKey,
+        appBar: AppBar(
+            backgroundColor: AppColors.backgroundColor,
+            title: Text(AppStrings.signUp)),
+        body: Stack(
+          children: <Widget>[
+            Container(
+              constraints: BoxConstraints.expand(),
+              color: AppColors.backgroundColor,
+              child: SafeArea(
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: ListView(
+                    shrinkWrap: true,
+                    children: <Widget>[
+                      _buildSignUpWithTextSection(),
+                      _authenticationSignUpButton(),
+                      _buildDividerSection(),
+                      _buildEmailAddressTextSection(),
+                      _textFormSectionEmail(),
+                      _buildPasswordTextSection(),
+                      _textFormSectionPassword(),
+                      _buildConfirmPasswordTextSection(),
+                      _textFormSectionConfirmPassword(),
+                      SizedBox(
+                        height: 20.0,
+                      ),
+                      _buildSignUpButtonSection(context)
+                    ],
+                  ),
                 ),
-                _buildSignUpButtonSection(context)
-              ],
+              ),
             ),
-          ),
-        ),
-      ),
-    );
+            _isLoading
+                ? Center(
+                    child: _buildLoadingIndicator(),
+                  )
+                : SizedBox.shrink()
+          ],
+        ));
   }
+
+  Widget _buildLoadingIndicator() => CircularProgressIndicator(
+        valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+      );
 }
