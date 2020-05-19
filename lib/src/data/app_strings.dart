@@ -18,7 +18,7 @@ class AppStrings {
   static const String signUpWith='Sign up with...';
   static const String confirmPassword='Confirm Password';
   static const String home = 'Home';
-  static const String search = 'Search';
+  static const String news = 'News';
   static const String teams = 'Teams';
   static const String notifications = 'Notifications';
   static const String profile = 'Profile';

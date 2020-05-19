@@ -21,7 +21,7 @@ class HomeScreenState extends State<HomeScreen> {
     )),
     Center(
         child: Text(
-      AppStrings.search,
+      AppStrings.news,
       style: TextStyle(fontSize: 30.0,color:Colors.white),
     )),
     Center(
@@ -59,8 +59,8 @@ class HomeScreenState extends State<HomeScreen> {
               
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.search),
-              title: Text(AppStrings.search),
+              icon: Icon(Icons.library_books),
+              title: Text(AppStrings.news),
               
             ),
             BottomNavigationBarItem(
