@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:league_app/src/data/app_colors.dart';
 import 'package:league_app/src/data/app_strings.dart';
-import 'package:league_app/src/ui/auth/login_screen.dart';
+import 'package:league_app/src/ui/pages/auth/login_screen.dart';
 
 class ResetPasswordScreen extends StatelessWidget {
  Widget _buildPasswordResetInstructionsTextSection() {

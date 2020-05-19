@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:league_app/src/data/app_colors.dart';
 import 'package:league_app/src/data/app_strings.dart';
-import 'package:league_app/src/ui/auth/welcome_screen.dart';
+import 'package:league_app/src/ui/pages/auth/welcome_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   @override

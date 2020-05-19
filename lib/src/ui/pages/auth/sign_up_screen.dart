@@ -1,29 +1,26 @@
-import 'package:flutter/cupertino.dart';
-import 'package:http/http.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
-import 'package:league_app/src/data/app_strings.dart';
-import 'package:league_app/src/ui/auth/forgot_password_screen.dart';
 import 'package:league_app/src/data/app_colors.dart';
-import 'package:league_app/src/services/login_service.dart';
-import 'package:league_app/src/ui/main/home.dart';
+import 'package:league_app/src/data/app_strings.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:league_app/src/ui/pages/main/home.dart';
+import 'package:http/http.dart';
+import 'package:league_app/src/services/sign_up_service.dart';
 
-
-
-class LoginScreen extends StatefulWidget {
+class SignUpScreen extends StatefulWidget {
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _SignUpScreenState createState() => _SignUpScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignUpScreenState extends State<SignUpScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
   bool _isLoading = false;
 
-  Widget _buildLogInWithTextSection() {
+  Widget _buildSignUpWithTextSection() {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 10.0),
       child: Text(
-        AppStrings.logInWith,
+        AppStrings.signUpWith,
         style: TextStyle(
           color: Colors.white,
           fontSize: 15,
@@ -35,7 +32,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget _buildAuthButton({String imageAsset, String label}) {
     return FlatButton(
       padding: EdgeInsets.all(0),
-      onPressed: () {},
+      onPressed: null,
       child: Container(
         decoration: BoxDecoration(
           color: Colors.white,
@@ -67,7 +64,7 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget _authenticationSignInButton() {
+  Widget _authenticationSignUpButton() {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 10.0),
       child: Row(
@@ -141,7 +138,10 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget _textFormSectionEmail() => _buildTextForm(hintText: AppStrings.emailAddress, isTextObscure: false, textInputType: TextInputType.emailAddress);
+  Widget _textFormSectionEmail() => _buildTextForm(
+      hintText: AppStrings.emailAddress,
+      isTextObscure: false,
+      textInputType: TextInputType.emailAddress);
 
   Widget _buildPasswordTextSection() {
     return Padding(
@@ -156,7 +156,28 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget _textFormSectionPassword() => _buildTextForm(hintText: AppStrings.password, isTextObscure: true, textInputType: TextInputType.visiblePassword);
+  Widget _textFormSectionPassword() => _buildTextForm(
+      hintText: AppStrings.password,
+      isTextObscure: true,
+      textInputType: TextInputType.visiblePassword);
+
+  Widget _buildConfirmPasswordTextSection() {
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 10),
+      child: Text(
+        AppStrings.confirmPassword,
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 15,
+        ),
+      ),
+    );
+  }
+
+  Widget _textFormSectionConfirmPassword() => _buildTextForm(
+      hintText: AppStrings.password,
+      isTextObscure: true,
+      textInputType: TextInputType.visiblePassword);
 
   Widget _buildTextForm(
       {TextInputType textInputType, String hintText, bool isTextObscure}) {
@@ -172,40 +193,12 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget _buildForgotPasswordClickableTextSection(BuildContext context) {
-    return FlatButton(
-      onPressed: () {
-        Navigator.pushAndRemoveUntil(
-            context,
-            MaterialPageRoute(builder: (context) => ForgotPasswordScreen()),
-            (_) => false);
-      },
-      padding: EdgeInsets.all(0),
-      child: Padding(
-        padding: EdgeInsets.symmetric(vertical: 10),
-        child: Align(
-          alignment: Alignment.centerRight,
-          child: Text(
-            AppStrings.forgotPassword,
-            textAlign: TextAlign.right,
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 12,
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildLogInButtonSection(BuildContext context) {
+  Widget _buildSignUpButtonSection(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 10),
       child: FlatButton(
         padding: EdgeInsets.all(0),
-        onPressed: () {
-          _login(context);
-        },
+        onPressed: (){_signUp(context);},
         child: Container(
           decoration: BoxDecoration(
               color: Color(0xFF177E89),
@@ -214,7 +207,7 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Padding(
               padding: const EdgeInsets.all(15),
               child: Text(
-                AppStrings.logIn,
+                AppStrings.signUp,
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 15,
@@ -227,27 +220,27 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Future<void> _login(BuildContext context) async {
+  Future<void> _signUp(BuildContext context) async {
 
     setState(() {
       _isLoading = true;
     });
 
     Client client = Client();
-    LoginService loginService = LoginService(client);
-    bool loginStatus = await loginService.login();
+    SignUpService signUpService = SignUpService(client);
+    bool signUpStatus = await signUpService.signUp();
 
     setState(() {
       _isLoading = false;
     });
 
-    if (loginStatus) {
+    if (signUpStatus) {
       Navigator.push(context,
           MaterialPageRoute(builder: (context) => Home()));
     } else {
       final SnackBar snackBar = SnackBar(
           content: Text(
-            'Could not login.',
+            AppStrings.signUpSnackbarErrorMessge,
             style: TextStyle(color: Colors.black),
           ),
           backgroundColor: Colors.white);
@@ -258,43 +251,46 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _scaffoldKey,
-      appBar: AppBar(
-          backgroundColor: AppColors.backgroundColor,
-          title: Text(AppStrings.logIn)),
-      body: Stack(
-        children: <Widget>[
-          Container(
-            constraints: BoxConstraints.expand(),
-            color: Color(0xFF323031),
-            child: SafeArea(
-              child: Padding(
-                padding: const EdgeInsets.all(20.0),
-                child: ListView(
-                  shrinkWrap: true,
-                  children: <Widget>[
-                    _buildLogInWithTextSection(),
-                    _authenticationSignInButton(),
-                    _buildDividerSection(),
-                    _buildEmailAddressTextSection(),
-                    _textFormSectionEmail(),
-                    _buildPasswordTextSection(),
-                    _textFormSectionPassword(),
-                    _buildForgotPasswordClickableTextSection(context),
-                    _buildLogInButtonSection(context),
-                  ],
+        key: _scaffoldKey,
+        appBar: AppBar(
+            backgroundColor: AppColors.backgroundColor,
+            title: Text(AppStrings.signUp)),
+        body: Stack(
+          children: <Widget>[
+            Container(
+              constraints: BoxConstraints.expand(),
+              color: AppColors.backgroundColor,
+              child: SafeArea(
+                child: Padding(
+                  padding: const EdgeInsets.all(20.0),
+                  child: ListView(
+                    shrinkWrap: true,
+                    children: <Widget>[
+                      _buildSignUpWithTextSection(),
+                      _authenticationSignUpButton(),
+                      _buildDividerSection(),
+                      _buildEmailAddressTextSection(),
+                      _textFormSectionEmail(),
+                      _buildPasswordTextSection(),
+                      _textFormSectionPassword(),
+                      _buildConfirmPasswordTextSection(),
+                      _textFormSectionConfirmPassword(),
+                      SizedBox(
+                        height: 20.0,
+                      ),
+                      _buildSignUpButtonSection(context)
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-          _isLoading
-              ? Center(
-                  child: _buildLoadingIndicator(),
-                )
-              : SizedBox.shrink(),
-        ],
-      ),
-    );
+            _isLoading
+                ? Center(
+                    child: _buildLoadingIndicator(),
+                  )
+                : SizedBox.shrink()
+          ],
+        ));
   }
 
   Widget _buildLoadingIndicator() => CircularProgressIndicator(

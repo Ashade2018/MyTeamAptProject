@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:league_app/src/data/app_strings.dart';
 import 'package:league_app/src/data/app_colors.dart';
-import 'package:league_app/src/ui/main/home_screen.dart';
-import 'package:league_app/src/ui/main/news_screen.dart';
-import 'package:league_app/src/ui/main/notification_screen.dart';
-import 'package:league_app/src/ui/main/profile_screen.dart';
-import 'package:league_app/src/ui/main/teams_screen.dart';
+import 'package:league_app/src/ui/pages/main/home_screen.dart';
+import 'package:league_app/src/ui/pages/main/news_screen.dart';
+import 'package:league_app/src/ui/pages/main/notification_screen.dart';
+import 'package:league_app/src/ui/pages/main/profile_screen.dart';
+import 'package:league_app/src/ui/pages/main/teams_screen.dart';
 
 class Home extends StatefulWidget {
   Home({Key key}) : super(key: key);

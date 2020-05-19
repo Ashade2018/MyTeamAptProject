@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:league_app/src/data/app_colors.dart';
 import 'package:league_app/src/data/app_strings.dart';
-import 'package:league_app/src/ui/auth/reset_password_screen.dart';
+import 'package:league_app/src/ui/pages/auth/reset_password_screen.dart';
 import 'package:league_app/src/services/reset_password_service.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {

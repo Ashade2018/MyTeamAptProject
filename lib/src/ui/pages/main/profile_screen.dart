@@ -2,17 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:league_app/src/data/app_colors.dart';
 import 'package:league_app/src/data/app_strings.dart';
+import 'package:league_app/src/ui/widgets/tab_background_wrapper.dart';
 
 class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: AppColors.backgroundColor,
-      child: Center(
-          child: Text(
-        AppStrings.profile,
-        style: TextStyle(fontSize: 30.0, color: Colors.white),
-      )),
+     return TabBackgroundWrapper(
+      title: AppStrings.profile,
+      //TODO Implement this screen by uncommenting the line below
+      //body: Container()
     );
   }
 }
