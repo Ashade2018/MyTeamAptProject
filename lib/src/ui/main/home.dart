@@ -43,12 +43,12 @@ class HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.backgroundColorElevated12,
+      backgroundColor: AppColors.backgroundColor,
       body: tabs[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
           currentIndex: _currentIndex,
           type: BottomNavigationBarType.fixed,
-          backgroundColor:AppColors.backgroundColor,
+          backgroundColor:AppColors.backgroundColorElevated12,
           selectedItemColor: Colors.white,
           unselectedItemColor: Colors.white54,
 
