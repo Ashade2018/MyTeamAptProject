@@ -1,0 +1,14 @@
+include: package:pedantic/analysis_options.1.8.0.yaml
+
+analyzer:
+  errors:
+    # treat missing required parameters as an error (not a hint)
+    missing_required_param: error
+
+linter:
+  rules:
+    - close_sinks
+    - prefer_spread_collections
+
+enable-experiment:
+    - spread-collections
