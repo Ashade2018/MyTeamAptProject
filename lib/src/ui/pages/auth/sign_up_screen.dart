@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:league_app/src/data/app_colors.dart';
 import 'package:league_app/src/data/app_strings.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:league_app/src/ui/pages/main/home.dart';
+import 'package:league_app/src/ui/pages/main/main_screen.dart';
 import 'package:http/http.dart';
 import 'package:league_app/src/services/sign_up_service.dart';
 
@@ -236,7 +236,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
     if (signUpStatus) {
       Navigator.push(context,
-          MaterialPageRoute(builder: (context) => Home()));
+          MaterialPageRoute(builder: (context) => MainScreen()));
     } else {
       final SnackBar snackBar = SnackBar(
           content: Text(

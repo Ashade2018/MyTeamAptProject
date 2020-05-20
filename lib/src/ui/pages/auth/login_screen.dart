@@ -6,7 +6,7 @@ import 'package:league_app/src/data/app_strings.dart';
 import 'package:league_app/src/ui/pages/auth/forgot_password_screen.dart';
 import 'package:league_app/src/data/app_colors.dart';
 import 'package:league_app/src/services/login_service.dart';
-import 'package:league_app/src/ui/pages/main/home.dart';
+import 'package:league_app/src/ui/pages/main/main_screen.dart';
 
 
 
@@ -243,7 +243,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
     if (loginStatus) {
       Navigator.push(context,
-          MaterialPageRoute(builder: (context) => Home()));
+          MaterialPageRoute(builder: (context) => MainScreen()));
     } else {
       final SnackBar snackBar = SnackBar(
           content: Text(

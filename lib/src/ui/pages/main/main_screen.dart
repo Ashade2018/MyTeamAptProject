@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:league_app/src/data/app_strings.dart';
 import 'package:league_app/src/data/app_colors.dart';
-import 'package:league_app/src/ui/pages/main/home_screen.dart';
-import 'package:league_app/src/ui/pages/main/news_screen.dart';
-import 'package:league_app/src/ui/pages/main/notification_screen.dart';
-import 'package:league_app/src/ui/pages/main/profile_screen.dart';
-import 'package:league_app/src/ui/pages/main/teams_screen.dart';
+import 'package:league_app/src/ui/pages/main/tabs/home_screen.dart';
+import 'package:league_app/src/ui/pages/main/tabs/news_screen.dart';
+import 'package:league_app/src/ui/pages/main/tabs/notification_screen.dart';
+import 'package:league_app/src/ui/pages/main/tabs/profile_screen.dart';
+import 'package:league_app/src/ui/pages/main/tabs/teams_screen.dart';
 
-class Home extends StatefulWidget {
-  Home({Key key}) : super(key: key);
+class MainScreen extends StatefulWidget {
+  MainScreen({Key key}) : super(key: key);
 
   @override
-  HomeState createState() => HomeState();
+  MainScreenState createState() => MainScreenState();
 }
 
-class HomeState extends State<Home> {
+class MainScreenState extends State<MainScreen> {
   int _currentIndex = 0;
   List<Widget> tabs = [
     HomeScreen(),
