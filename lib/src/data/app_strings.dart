@@ -24,7 +24,19 @@ class AppStrings {
   static const String notifications = 'Notifications';
   static const String profile = 'Profile';
   static const String signUpSnackbarErrorMessge = 'Could not sign up.';
-  static const String homeScreenNewsTitle = 'The Premier League is restarting and there is outrage';
+  static const String homeScreenNewsTitle =
+      'The Premier League is restarting and there is outrage';
   static const String latestNews = 'Latest News';
   static const String showAll = 'Show All';
+  static const String leagueTableTitle = 'League Table';
+  static const String leagueTableTitlePos = 'Pos';
+  static const String leagueTableTitleClub = 'Club';
+  static const String leagueTableTitleP = 'P';
+  static const String leagueTableTitleGD = 'GD';
+  static const String leagueTableTitlePts = 'Pts';
+  static const String liverpoolClub = 'Liverpool';
+  static const String manCityClub = 'Man City';
+  static const String leicesterClub = 'Leicester';
+  static const String chelseaClub = 'Chelsea';
+  static const String manUtdClub = 'Man Utd';   static const String fullTable = 'Full Table';
 }
