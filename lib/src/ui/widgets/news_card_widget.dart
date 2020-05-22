@@ -4,7 +4,7 @@ class NewsCard extends StatelessWidget {
   final String title;
   final String imageUrl;
 
-  const NewsCard({Key key, @required this.title, @required this.imageUrl})
+  const NewsCard({Key key, @required this.title, @required this.imageUrl, List<NewsCard> body})
       : super(key: key);
 
   @override
