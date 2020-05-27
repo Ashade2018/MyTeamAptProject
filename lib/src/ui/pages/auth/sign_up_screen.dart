@@ -198,7 +198,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
       padding: EdgeInsets.symmetric(vertical: 10),
       child: FlatButton(
         padding: EdgeInsets.all(0),
-        onPressed: (){_signUp(context);},
+        onPressed: () {
+          _signUp(context);
+        },
         child: Container(
           decoration: BoxDecoration(
               color: Color(0xFF177E89),
@@ -221,7 +223,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   Future<void> _signUp(BuildContext context) async {
-
     setState(() {
       _isLoading = true;
     });
@@ -235,8 +236,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
     });
 
     if (signUpStatus) {
-      Navigator.push(context,
-          MaterialPageRoute(builder: (context) => MainScreen()));
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => MainScreen()));
     } else {
       final SnackBar snackBar = SnackBar(
           content: Text(
@@ -254,7 +255,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
         key: _scaffoldKey,
         appBar: AppBar(
             backgroundColor: AppColors.backgroundColor,
-            title: Text(AppStrings.signUp)),
+            title:
+                Text(AppStrings.signUp, style: TextStyle(color: Colors.white))),
         body: Stack(
           children: <Widget>[
             Container(

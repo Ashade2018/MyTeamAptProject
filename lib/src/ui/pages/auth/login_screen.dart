@@ -8,8 +8,6 @@ import 'package:league_app/src/data/app_colors.dart';
 import 'package:league_app/src/services/login_service.dart';
 import 'package:league_app/src/ui/pages/main/main_screen.dart';
 
-
-
 class LoginScreen extends StatefulWidget {
   @override
   _LoginScreenState createState() => _LoginScreenState();
@@ -141,7 +139,10 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget _textFormSectionEmail() => _buildTextForm(hintText: AppStrings.emailAddress, isTextObscure: false, textInputType: TextInputType.emailAddress);
+  Widget _textFormSectionEmail() => _buildTextForm(
+      hintText: AppStrings.emailAddress,
+      isTextObscure: false,
+      textInputType: TextInputType.emailAddress);
 
   Widget _buildPasswordTextSection() {
     return Padding(
@@ -156,7 +157,10 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget _textFormSectionPassword() => _buildTextForm(hintText: AppStrings.password, isTextObscure: true, textInputType: TextInputType.visiblePassword);
+  Widget _textFormSectionPassword() => _buildTextForm(
+      hintText: AppStrings.password,
+      isTextObscure: true,
+      textInputType: TextInputType.visiblePassword);
 
   Widget _buildTextForm(
       {TextInputType textInputType, String hintText, bool isTextObscure}) {
@@ -228,7 +232,6 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Future<void> _login(BuildContext context) async {
-
     setState(() {
       _isLoading = true;
     });
@@ -242,8 +245,8 @@ class _LoginScreenState extends State<LoginScreen> {
     });
 
     if (loginStatus) {
-      Navigator.push(context,
-          MaterialPageRoute(builder: (context) => MainScreen()));
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => MainScreen()));
     } else {
       final SnackBar snackBar = SnackBar(
           content: Text(
@@ -261,7 +264,7 @@ class _LoginScreenState extends State<LoginScreen> {
       key: _scaffoldKey,
       appBar: AppBar(
           backgroundColor: AppColors.backgroundColor,
-          title: Text(AppStrings.logIn)),
+          title: Text(AppStrings.logIn, style: TextStyle(color: Colors.white))),
       body: Stack(
         children: <Widget>[
           Container(

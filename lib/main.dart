@@ -12,7 +12,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         title: AppStrings.appTitle,
         theme: ThemeData(
-          textTheme: GoogleFonts.latoTextTheme(
+          appBarTheme: AppBarTheme(
+              textTheme:
+                  GoogleFonts.poppinsTextTheme(Theme.of(context).textTheme)),
+          textTheme: GoogleFonts.poppinsTextTheme(
             Theme.of(context).textTheme,
           ),
           primarySwatch: Colors.blue,
