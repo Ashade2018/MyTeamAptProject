@@ -27,4 +27,26 @@ class AppStrings {
   static const String homeScreenNewsTitle = 'The Premier League is restarting and there is outrage';
   static const String latestNews = 'Latest News';
   static const String showAll = 'Show All';
+   static const String bournemouth ='AFC Bournemouth';
+   static const String arsenal ='Arsenal';
+   static const String astonVilla ='Aston Villa';
+   static const String brighton ='Brighton and Hove Albion';
+   static const String burnley ='Burnley';
+   static const String chelsea ='Chelsea';
+   static const String crystalPalace ='Crystal Palace';
+   static const String everton = 'Everton';
+   static const String leceisterCity = 'Leceister City';
+   static const String liverpool ='Liverpool';
+   static const String manchesterCity = 'Manchester City';
+   static const String manchesterUnited = 'Manchester United';
+   static const String norwichCity = 'Norwich City';
+   static const String sheffieldUnited = 'Sheffield United';
+   static const String southampton = 'Southampton';
+   static const String totthamHotspur = 'Tottham Hotspur';
+   static const String watford = 'Watford';
+    static const String westham ='West Ham United';
+     static const String wolverHampton = 'Wolverhampton Wanderer';
+   
+   
+
 }
