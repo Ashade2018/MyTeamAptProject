@@ -2,10 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:league_app/src/data/app_assets.dart';
 import 'package:league_app/src/data/app_strings.dart';
+import 'package:league_app/src/ui/pages/main/tabs/teams/team_details_screen.dart';
 import 'package:league_app/src/ui/widgets/tab_background_wrapper.dart';
 
 class TeamsScreen extends StatelessWidget {
-  final int index = 0;
   final List<String> _teamList = [
     AppStrings.bournemouth,
     AppStrings.arsenal,
@@ -28,8 +28,14 @@ class TeamsScreen extends StatelessWidget {
     AppStrings.westham,
     AppStrings.wolverHampton,
   ];
+
   @override
   Widget build(BuildContext context) {
+    void _navigateToTeamDetailsScreen() {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => TeamDetailScreen()));
+    }
+
     return TabBackgroundWrapper(
       title: AppStrings.teams,
       body: ListView.builder(
@@ -39,19 +45,23 @@ class TeamsScreen extends StatelessWidget {
           itemBuilder: (context, index) {
             return Column(
               children: <Widget>[
-                ListTile(
-                  contentPadding: EdgeInsets.only(left:0),
-                  leading: SizedBox(
-                    height: 30.0,
-                    width: 30.0,
-                    child: Image.asset(
-                      AppAssets.liverpoolLogo,
+                Material(
+                  color: Colors.transparent,
+                  child: ListTile(
+                    onTap: _navigateToTeamDetailsScreen,
+                    contentPadding: EdgeInsets.only(left: 0),
+                    leading: SizedBox(
+                      height: 30.0,
+                      width: 30.0,
+                      child: Image.asset(
+                        AppAssets.liverpoolLogo,
+                      ),
                     ),
-                  ),
-                  title: Text(
-                    _teamList[index],
-                    style: TextStyle(
-                      color: Colors.white,
+                    title: Text(
+                      _teamList[index],
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
                     ),
                   ),
                 ),
