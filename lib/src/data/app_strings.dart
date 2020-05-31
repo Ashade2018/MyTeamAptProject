@@ -24,29 +24,37 @@ class AppStrings {
   static const String notifications = 'Notifications';
   static const String profile = 'Profile';
   static const String signUpSnackbarErrorMessge = 'Could not sign up.';
-  static const String homeScreenNewsTitle = 'The Premier League is restarting and there is outrage';
+  static const String homeScreenNewsTitle =
+      'The Premier League is restarting and there is outrage';
   static const String latestNews = 'Latest News';
   static const String showAll = 'Show All';
-   static const String bournemouth ='AFC Bournemouth';
-   static const String arsenal ='Arsenal';
-   static const String astonVilla ='Aston Villa';
-   static const String brighton ='Brighton and Hove Albion';
-   static const String burnley ='Burnley';
-   static const String chelsea ='Chelsea';
-   static const String crystalPalace ='Crystal Palace';
-   static const String everton = 'Everton';
-   static const String leceisterCity = 'Leceister City';
-   static const String liverpool ='Liverpool';
-   static const String manchesterCity = 'Manchester City';
-   static const String manchesterUnited = 'Manchester United';
-   static const String norwichCity = 'Norwich City';
-   static const String sheffieldUnited = 'Sheffield United';
-   static const String southampton = 'Southampton';
-   static const String totthamHotspur = 'Tottham Hotspur';
-   static const String watford = 'Watford';
-    static const String westham ='West Ham United';
-     static const String wolverHampton = 'Wolverhampton Wanderer';
-   
-   
-
+  static const String bournemouth = 'AFC Bournemouth';
+  static const String arsenal = 'Arsenal';
+  static const String astonVilla = 'Aston Villa';
+  static const String brighton = 'Brighton and Hove Albion';
+  static const String burnley = 'Burnley';
+  static const String chelsea = 'Chelsea';
+  static const String crystalPalace = 'Crystal Palace';
+  static const String everton = 'Everton';
+  static const String leceisterCity = 'Leceister City';
+  static const String liverpool = 'Liverpool';
+  static const String manchesterCity = 'Manchester City';
+  static const String manchesterUnited = 'Manchester United';
+  static const String norwichCity = 'Norwich City';
+  static const String sheffieldUnited = 'Sheffield United';
+  static const String southampton = 'Southampton';
+  static const String totthamHotspur = 'Tottham Hotspur';
+  static const String watford = 'Watford';
+  static const String westham = 'West Ham United';
+  static const String wolverHampton = 'Wolverhampton Wanderer';
+  static const String overview = 'Overview';
+  static const String fullName = 'Full Name';
+  static const String nickname = 'Nickname';
+  static const String foundedOn = 'Founded on';
+  static const String foootballClub = ' Football Club';
+  static const String liverpoolNickname = 'The Reds';
+  static const String liverpoolFoundedDate = '3 June 1892';
+  static const String description = 'Description';
+  static const String descriptionLatinText =
+      'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam.';
 }
