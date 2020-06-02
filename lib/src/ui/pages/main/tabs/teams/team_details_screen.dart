@@ -28,7 +28,7 @@ class TeamDetailScreen extends StatelessWidget {
               height: 16.0,
             ),
             Text(
-              AppStrings.descriptionLatinText,
+              AppStrings.loremIpsum,
               style: TextStyle(
                 fontSize: 12,
                 color: Colors.white,
