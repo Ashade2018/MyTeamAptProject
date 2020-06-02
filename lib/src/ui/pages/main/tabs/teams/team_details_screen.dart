@@ -5,15 +5,16 @@ import 'package:league_app/src/data/app_colors.dart';
 import 'package:league_app/src/data/app_strings.dart';
 
 class TeamDetailScreen extends StatelessWidget {
-  Widget _displayDescriptionSection() {
-    return Container(
-      color: Colors.grey[800],
+  Widget _buildDescriptionCard() {
+    return Card(
+      color: AppColors.backgroundColorElevated12,
+      margin: EdgeInsets.symmetric(horizontal: 0.0),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 12),
         child: Column(
           children: <Widget>[
             Align(
-              alignment: Alignment.topLeft,
+              alignment: Alignment.centerLeft,
               child: Text(
                 AppStrings.description,
                 style: TextStyle(
@@ -24,7 +25,7 @@ class TeamDetailScreen extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 8.0,
+              height: 16.0,
             ),
             Text(
               AppStrings.descriptionLatinText,
@@ -39,62 +40,65 @@ class TeamDetailScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildOverviewInformation(String titleText, String trailingText) {
-    return Column(children: <Widget>[
-      Divider(color: Colors.white),
-      Padding(
-        padding: const EdgeInsets.symmetric(vertical: 8.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Text(
-              titleText,
-              style: TextStyle(
-                fontSize: 12,
-                color: Colors.grey,
-              ),
-            ),
-            Text(
-              trailingText,
-              style: TextStyle(
-                fontSize: 12,
-                color: Colors.white,
-              ),
-            )
-          ],
-        ),
-      ),
-    ]);
-  }
-
-  Widget _displayOverviewSection() {
-    return Container(
-      color: Colors.grey[800],
+  Widget _buildOverviewCard() {
+    return Card(
+      color: AppColors.backgroundColorElevated12,
+      margin: EdgeInsets.symmetric(horizontal: 0.0),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 12),
         child: Column(
           children: <Widget>[
             Align(
-              alignment: Alignment.topLeft,
+              alignment: Alignment.centerLeft,
               child: Text(
                 AppStrings.overview,
                 style: TextStyle(
-                  fontSize: 16,
-                  color: Colors.white,
-                ),
+                    fontSize: 16,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w500),
               ),
             ),
-            SizedBox(
-              height: 8.0,
-            ),
-            _buildOverviewInformation(AppStrings.fullName,
-                AppStrings.liverpool + AppStrings.foootballClub),
+            SizedBox(height: 16.0),
+            Divider(color: Colors.white),
             _buildOverviewInformation(
-                AppStrings.nickname, AppStrings.liverpoolNickname),
+                title: AppStrings.fullName,
+                detail: AppStrings.liverpool + AppStrings.foootballClub),
+            Divider(color: Colors.white),
             _buildOverviewInformation(
-                AppStrings.foundedOn, AppStrings.liverpoolFoundedDate)
+                title: AppStrings.nickname,
+                detail: AppStrings.liverpoolNickname),
+            Divider(color: Colors.white),
+            _buildOverviewInformation(
+                title: AppStrings.foundedOn,
+                detail: AppStrings.liverpoolFoundedDate)
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _buildOverviewInformation(
+      {@required String title, @required String detail}) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 4.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: <Widget>[
+          Text(
+            title,
+            style: TextStyle(
+                fontSize: 12,
+                color: Colors.white70,
+                fontWeight: FontWeight.w100),
+          ),
+          Text(
+            detail,
+            style: TextStyle(
+              fontSize: 12,
+              color: Colors.white,
+            ),
+          )
+        ],
       ),
     );
   }
@@ -104,7 +108,7 @@ class TeamDetailScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
       appBar: AppBar(
-        backgroundColor: Color(0xFF212121),
+        backgroundColor: AppColors.backgroundColor,
         title: Text(
           AppStrings.liverpool,
           style: TextStyle(color: Colors.white),
@@ -115,11 +119,9 @@ class TeamDetailScreen extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 16),
           child: Column(
             children: <Widget>[
-              _displayOverviewSection(),
-              SizedBox(
-                height: 25.0,
-              ),
-              _displayDescriptionSection(),
+              _buildOverviewCard(),
+              SizedBox(height: 24.0),
+              _buildDescriptionCard(),
             ],
           ),
         ),
