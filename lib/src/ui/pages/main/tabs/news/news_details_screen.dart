@@ -31,7 +31,7 @@ class NewsDetailsScreen extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Text(
-        AppStrings.newsParagraph,
+        AppStrings.loremIpsum,
         style: TextStyle(
           color: Colors.white,
         ),

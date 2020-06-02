@@ -47,76 +47,17 @@ class AppStrings {
   static const String watford = 'Watford';
   static const String westham = 'West Ham United';
   static const String wolverHampton = 'Wolverhampton Wanderer';
-  static const String newsParagraph =
-      '''Lorem ipsum dolor sit amet, consetetur sadipscing 
-elitr, sed diam nonumy eirmod tempor invidunt ut 
-labore et dolore magna aliquyam erat, sed diam 
-voluptua. At vero eos et accusam et justo duo dolores 
-et ea rebum. Stet clita kasd gubergren, no sea 
-takimata sanctus est Lorem ipsum dolor sit amet. 
-Lorem ipsum dolor sit amet, consetetur sadipscing 
-elitr, sed diam nonumy eirmod tempor invidunt ut 
-labore et dolore magna aliquyam erat, sed diam 
-voluptua. At vero eos et accusam et justo duo dolores 
-et ea rebum. Stet clita kasd gubergren, no sea 
-takimata sanctus est Lorem ipsum dolor sit amet.
-Lorem ipsum dolor sit amet, consetetur sadipscing 
-elitr, sed diam nonumy eirmod tempor invidunt ut 
-labore et dolore magna aliquyam erat, sed diam 
-voluptua. At vero eos et accusam et justo duo dolores 
-et ea rebum. Stet clita kasd gubergren, no sea 
-takimata sanctus est Lorem ipsum dolor sit amet. 
-Lorem ipsum dolor sit amet, consetetur sadipscing 
-elitr, sed diam nonumy eirmod tempor invidunt ut 
-labore et dolore magna aliquyam erat, sed diam 
-voluptua. At vero eos et accusam et justo duo dolores 
-et ea rebum. Stet clita kasd gubergren, no sea 
-takimata sanctus est Lorem ipsum dolor sit amet.
-Lorem ipsum dolor sit amet, consetetur sadipscing 
-elitr, sed diam nonumy eirmod tempor invidunt ut 
-labore et dolore magna aliquyam erat, sed diam 
-voluptua. At vero eos et accusam et justo duo dolores 
-et ea rebum. Stet clita kasd gubergren, no sea 
-takimata sanctus est Lorem ipsum dolor sit amet. 
-Lorem ipsum dolor sit amet, consetetur sadipscing 
-elitr, sed diam nonumy eirmod tempor invidunt ut 
-labore et dolore magna aliquyam erat, sed diam 
-voluptua. At vero eos et accusam et justo duo dolores 
-et ea rebum. Stet clita kasd gubergren, no sea 
-takimata sanctus est Lorem ipsum dolor sit amet.
-Lorem ipsum dolor sit amet, consetetur sadipscing 
-elitr, sed diam nonumy eirmod tempor invidunt ut 
-labore et dolore magna aliquyam erat, sed diam 
-voluptua. At vero eos et accusam et justo duo dolores 
-et ea rebum. Stet clita kasd gubergren, no sea 
-takimata sanctus est Lorem ipsum dolor sit amet. 
-Lorem ipsum dolor sit amet, consetetur sadipscing 
-elitr, sed diam nonumy eirmod tempor invidunt ut 
-labore et dolore magna aliquyam erat, sed diam 
-voluptua. At vero eos et accusam et justo duo dolores 
-et ea rebum. Stet clita kasd gubergren, no sea 
-takimata sanctus est Lorem ipsum dolor sit amet.
-Lorem ipsum dolor sit amet, consetetur sadipscing 
-elitr, sed diam nonumy eirmod tempor invidunt ut 
-labore et dolore magna aliquyam erat, sed diam 
-voluptua. At vero eos et accusam et justo duo dolores 
-et ea rebum. Stet clita kasd gubergren, no sea 
-takimata sanctus est Lorem ipsum dolor sit amet. 
-Lorem ipsum dolor sit amet, consetetur sadipscing 
-elitr, sed diam nonumy eirmod tempor invidunt ut 
-labore et dolore magna aliquyam erat, sed diam 
-voluptua. At vero eos et accusam et justo duo dolores 
-et ea rebum. Stet clita kasd gubergren, no sea 
-takimata sanctus est Lorem ipsum dolor sit amet.
-Lorem ipsum dolor sit amet, consetetur sadipscing 
-elitr, sed diam nonumy eirmod tempor invidunt ut 
-labore et dolore magna aliquyam erat, sed diam 
-voluptua. At vero eos et accusam et justo duo dolores 
-et ea rebum. Stet clita kasd gubergren, no sea 
-takimata sanctus est Lorem ipsum dolor sit amet. 
-Lorem ipsum dolor sit amet, consetetur sadipscing 
-elitr, sed diam nonumy eirmod tempor invidunt ut 
-labore et dolore magna aliquyam erat, sed diam.''';
+  static const String overview = 'Overview';
+  static const String fullName = 'Full Name';
+  static const String nickname = 'Nickname';
+  static const String foundedOn = 'Founded on';
+  static const String foootballClub = ' Football Club';
+  static const String liverpoolNickname = 'The Reds';
+  static const String liverpoolFoundedDate = '3 June 1892';
+  static const String description = 'Description';
+  static const String loremIpsum =
+      'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam.';
+
   static const String feature = 'Feature';
   static const String johnDoe = 'John Doe';
   static const String date = '29,May 2020,09:00';
