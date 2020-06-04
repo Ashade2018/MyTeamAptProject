@@ -26,7 +26,7 @@ class TabBackgroundWrapper extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: 16.0,
+                height: 32.0,
               ),
               body ?? SizedBox.shrink()
             ],

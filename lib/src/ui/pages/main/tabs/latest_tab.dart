@@ -3,16 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:league_app/src/data/app_assets.dart';
 import 'package:league_app/src/data/app_colors.dart';
 import 'package:league_app/src/data/app_strings.dart';
-import 'package:league_app/src/ui/pages/main/tabs/news/news_details_screen.dart';
+import 'package:league_app/src/ui/pages/main/tabs/league/news/news_details_screen.dart';
 import 'package:league_app/src/ui/widgets/news_card_widget.dart';
 import 'package:league_app/src/ui/widgets/tab_background_wrapper.dart';
 
-class HomeScreen extends StatefulWidget {
+class LatestTab extends StatefulWidget {
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _LatestTabState createState() => _LatestTabState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _LatestTabState extends State<LatestTab> {
   List<NewsCard> _listOfNewsCards;
   
   void _navigateToNewsDetailsScreen() {
@@ -38,7 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return TabBackgroundWrapper(
-      title: AppStrings.appTitle,
+      title: AppStrings.latest,
       body: Column(
         children: <Widget>[
           _buildNewsTopRow(),

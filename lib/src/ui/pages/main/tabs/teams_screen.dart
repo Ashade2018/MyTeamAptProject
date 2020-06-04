@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:league_app/src/data/app_assets.dart';
 import 'package:league_app/src/data/app_strings.dart';
-import 'package:league_app/src/ui/pages/main/tabs/teams/team_details_screen.dart';
+import 'package:league_app/src/ui/pages/main/tabs/league/teams/team_details_screen.dart';
 import 'package:league_app/src/ui/widgets/tab_background_wrapper.dart';
 
 class TeamsScreen extends StatelessWidget {

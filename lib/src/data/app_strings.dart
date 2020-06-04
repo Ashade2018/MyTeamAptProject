@@ -1,5 +1,6 @@
 class AppStrings {
-  static const String appTitle = 'Big League';
+  static const String bigLeague = 'Big League';
+  static const String appTitle = bigLeague;
   static const String signUp = 'Sign Up';
   static const String logIn = 'Log In';
   static const String alreadyHaveAnAccount = 'Already have an account?';
@@ -18,7 +19,7 @@ class AppStrings {
   static const String backToLogin = 'Back To Login';
   static const String signUpWith = 'Sign up with...';
   static const String confirmPassword = 'Confirm Password';
-  static const String home = 'Home';
+  static const String latest = 'Latest';
   static const String news = 'News';
   static const String teams = 'Teams';
   static const String notifications = 'Notifications';
@@ -57,8 +58,12 @@ class AppStrings {
   static const String description = 'Description';
   static const String loremIpsum =
       'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam.';
-
   static const String feature = 'Feature';
   static const String johnDoe = 'John Doe';
   static const String date = '29,May 2020,09:00';
+  static const String league = 'League';
+  static const String fixtures = 'Fixtures';
+  static const String table = 'Table';
+  static const String players = 'Players';
+  static const String seasons = 'Seasons';
 }

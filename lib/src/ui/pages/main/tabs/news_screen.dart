@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:league_app/src/data/app_assets.dart';
 import 'package:league_app/src/data/app_strings.dart';
-import 'package:league_app/src/ui/pages/main/tabs/news/news_details_screen.dart';
+import 'package:league_app/src/ui/pages/main/tabs/league/news/news_details_screen.dart';
 import 'package:league_app/src/ui/widgets/news_card_widget.dart';
 import 'package:league_app/src/ui/widgets/tab_background_wrapper.dart';
 
