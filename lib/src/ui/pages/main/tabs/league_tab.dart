@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:league_app/src/data/app_colors.dart';
 import 'package:league_app/src/data/app_strings.dart';
+import 'package:league_app/src/ui/pages/main/tabs/news_screen.dart';
+import 'package:league_app/src/ui/pages/main/tabs/teams_screen.dart';
 import 'package:league_app/src/ui/widgets/tab_background_wrapper.dart';
 
 class LeagueTab extends StatelessWidget {
   const LeagueTab({Key key}) : super(key: key);
 
-  Widget _buildStatsSection() {
+  Widget _buildStatsSection(BuildContext context) {
     return Column(
       children: <Widget>[
         _buildLeagueItemTile(title: AppStrings.fixtures, onTap: () {}),
@@ -23,7 +25,7 @@ class LeagueTab extends StatelessWidget {
     return Card(
       color: AppColors.backgroundColorElevated12,
       child: ListTile(
-        onTap: () {},
+        onTap: onTap,
         title: Text(
           title,
           style: TextStyle(color: Colors.white),
@@ -36,22 +38,32 @@ class LeagueTab extends StatelessWidget {
     );
   }
 
-  Widget _buildPeopleSection() {
+  Widget _buildPeopleSection(BuildContext context) {
     return Column(
       children: <Widget>[
         _buildLeagueItemTile(title: AppStrings.players, onTap: () {}),
         SizedBox(
           height: 8.0,
         ),
-        _buildLeagueItemTile(title: AppStrings.teams, onTap: () {}),
+        _buildLeagueItemTile(
+            title: AppStrings.teams,
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => TeamsScreen()));
+            }),
       ],
     );
   }
 
-  Widget _buildInformationSection() {
+  Widget _buildInformationSection(BuildContext context) {
     return Column(
       children: <Widget>[
-        _buildLeagueItemTile(title: AppStrings.news, onTap: () {}),
+        _buildLeagueItemTile(
+            title: AppStrings.news,
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => NewsScreen()));
+            }),
         SizedBox(
           height: 8.0,
         ),
@@ -66,15 +78,15 @@ class LeagueTab extends StatelessWidget {
       title: AppStrings.bigLeague,
       body: Column(
         children: <Widget>[
-          _buildStatsSection(),
+          _buildStatsSection(context),
           SizedBox(
             height: 24,
           ),
-          _buildPeopleSection(),
+          _buildPeopleSection(context),
           SizedBox(
             height: 24,
           ),
-          _buildInformationSection(),
+          _buildInformationSection(context),
         ],
       ),
     );
