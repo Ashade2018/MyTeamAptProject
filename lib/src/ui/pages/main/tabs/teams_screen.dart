@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:league_app/src/data/app_assets.dart';
+import 'package:league_app/src/data/app_colors.dart';
 import 'package:league_app/src/data/app_strings.dart';
 import 'package:league_app/src/ui/pages/main/tabs/league/teams/team_details_screen.dart';
-import 'package:league_app/src/ui/widgets/tab_background_wrapper.dart';
 
 class TeamsScreen extends StatelessWidget {
   final List<String> _teamList = [
@@ -29,48 +29,58 @@ class TeamsScreen extends StatelessWidget {
     AppStrings.wolverHampton,
   ];
 
+  void _navigateToTeamDetailsScreen(BuildContext context) {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => TeamDetailScreen()));
+  }
+
   @override
   Widget build(BuildContext context) {
-    void _navigateToTeamDetailsScreen() {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => TeamDetailScreen()));
-    }
-
-    return TabBackgroundWrapper(
-      title: AppStrings.teams,
+    return Scaffold(
+      backgroundColor: AppColors.backgroundColor,
+      appBar: AppBar(
+        title: Text(
+          AppStrings.teams,
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: AppColors.backgroundColorElevated12,
+      ),
       body: ListView.builder(
-          shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
+          padding: const EdgeInsets.fromLTRB(16.0, 32.0, 16.0, 16.0),
           itemCount: _teamList.length,
           itemBuilder: (context, index) {
-            return Column(
-              children: <Widget>[
-                Material(
-                  color: Colors.transparent,
-                  child: ListTile(
-                    onTap: _navigateToTeamDetailsScreen,
-                    contentPadding: EdgeInsets.only(left: 0),
-                    leading: SizedBox(
-                      height: 30.0,
-                      width: 30.0,
-                      child: Image.asset(
-                        AppAssets.liverpoolLogo,
-                      ),
-                    ),
-                    title: Text(
-                      _teamList[index],
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ),
-                Divider(
-                  color: Colors.white54,
-                ),
-              ],
-            );
+            return _buildTeamListTile(context, index: index);
           }),
+    );
+  }
+
+  Widget _buildTeamListTile(BuildContext context, {@required int index}) {
+    return Column(
+      children: <Widget>[
+        Material(
+          color: Colors.transparent,
+          child: ListTile(
+            onTap: () => _navigateToTeamDetailsScreen(context),
+            contentPadding: EdgeInsets.only(left: 0),
+            leading: SizedBox(
+              height: 30.0,
+              width: 30.0,
+              child: Image.asset(
+                AppAssets.liverpoolLogo,
+              ),
+            ),
+            title: Text(
+              _teamList[index],
+              style: TextStyle(
+                color: Colors.white,
+              ),
+            ),
+          ),
+        ),
+        Divider(
+          color: Colors.white54,
+        ),
+      ],
     );
   }
 }
