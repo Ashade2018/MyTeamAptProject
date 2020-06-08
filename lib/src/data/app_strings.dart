@@ -66,7 +66,16 @@ class AppStrings {
   static const String table = 'Table';
   static const String players = 'Players';
   static const String seasons = 'Seasons';
+
+  static const String dateToBeConfirmed = 'Date To Be Confirmed';
+  static const String confirmedDate = 'Saturday 06 June 2020';
+  static const String leicester = 'Leicester';
+  static const String manCity = 'Man City';
+  static const String tbc = 'TBC';
+  static const String twelve = '12:30';
+
   static const String tammyAbraham = 'Tammy Abraham';
   static const String england = 'England';
   static const String forward = 'Forward';
+
 }

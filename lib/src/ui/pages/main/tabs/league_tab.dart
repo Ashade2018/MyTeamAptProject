@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:league_app/src/data/app_colors.dart';
 import 'package:league_app/src/data/app_strings.dart';
-import 'package:league_app/src/ui/pages/main/tabs/news_screen.dart';
-import 'package:league_app/src/ui/pages/main/tabs/teams_screen.dart';
+import 'package:league_app/src/ui/pages/main/tabs/league/fixtures_screen.dart';
+import 'package:league_app/src/ui/pages/main/tabs/league/news_screen.dart';
+import 'package:league_app/src/ui/pages/main/tabs/league/teams_screen.dart';
 import 'package:league_app/src/ui/widgets/tab_background_wrapper.dart';
 
 class LeagueTab extends StatelessWidget {
@@ -11,7 +12,12 @@ class LeagueTab extends StatelessWidget {
   Widget _buildStatsSection(BuildContext context) {
     return Column(
       children: <Widget>[
-        _buildLeagueItemTile(title: AppStrings.fixtures, onTap: () {}),
+        _buildLeagueItemTile(
+            title: AppStrings.fixtures,
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => FixturesScreen()));
+            }),
         SizedBox(
           height: 8.0,
         ),
