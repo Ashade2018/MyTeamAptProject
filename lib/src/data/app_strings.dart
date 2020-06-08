@@ -66,4 +66,7 @@ class AppStrings {
   static const String table = 'Table';
   static const String players = 'Players';
   static const String seasons = 'Seasons';
+  static const String tammyAbraham = 'Tammy Abraham';
+  static const String england = 'England';
+  static const String forward = 'Forward';
 }
