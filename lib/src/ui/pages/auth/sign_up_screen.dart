@@ -14,6 +14,12 @@ class SignUpScreen extends StatefulWidget {
 class _SignUpScreenState extends State<SignUpScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  final TextEditingController _password = TextEditingController();
+  final TextEditingController _confirmPassword = TextEditingController();
+  final TextEditingController _email = TextEditingController();
+
   bool _isLoading = false;
 
   Widget _buildSignUpWithTextSection() {
@@ -138,10 +144,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 
-  Widget _textFormSectionEmail() => _buildTextForm(
+  Widget _buildEmailTextFormField() => _buildTextForm(
+      controller: _email,
       hintText: AppStrings.emailAddress,
       isTextObscure: false,
-      textInputType: TextInputType.emailAddress);
+      textInputType: TextInputType.emailAddress,
+      validator: (String value) {
+        if (value.isEmpty) {
+          return AppStrings.emailAddress + AppStrings.emptyFieldErrorMessage;
+        }
+        return null;
+      });
 
   Widget _buildPasswordTextSection() {
     return Padding(
@@ -156,10 +169,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 
-  Widget _textFormSectionPassword() => _buildTextForm(
-      hintText: AppStrings.password,
-      isTextObscure: true,
-      textInputType: TextInputType.visiblePassword);
+  Widget _buildPasswordTextFormField() => _buildTextForm(
+        controller: _password,
+        hintText: AppStrings.password,
+        isTextObscure: true,
+        textInputType: TextInputType.visiblePassword,
+        validator: (String value) {
+          if (value.isEmpty) {
+            return AppStrings.password + AppStrings.emptyFieldErrorMessage;
+          }
+          return null;
+        },
+      );
 
   Widget _buildConfirmPasswordTextSection() {
     return Padding(
@@ -174,13 +195,27 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 
-  Widget _textFormSectionConfirmPassword() => _buildTextForm(
-      hintText: AppStrings.password,
+  Widget _buildConfirmPasswordTextFormField() => _buildTextForm(
+      controller: _confirmPassword,
+      hintText: AppStrings.confirmPassword,
       isTextObscure: true,
-      textInputType: TextInputType.visiblePassword);
+      textInputType: TextInputType.visiblePassword,
+      validator: (String value) {
+        if (value.isEmpty) {
+          return AppStrings.confirmPassword + AppStrings.emptyFieldErrorMessage;
+        }
+        if (value != _password.text) {
+          return AppStrings.doesNotMatchErrorMessage + AppStrings.password;
+        }
+        return null;
+      });
 
   Widget _buildTextForm(
-      {TextInputType textInputType, String hintText, bool isTextObscure}) {
+      {TextInputType textInputType,
+      String hintText,
+      bool isTextObscure,
+      String Function(String) validator,
+      TextEditingController controller}) {
     return TextFormField(
       obscureText: isTextObscure,
       keyboardType: textInputType,
@@ -190,34 +225,53 @@ class _SignUpScreenState extends State<SignUpScreen> {
         hintText: hintText,
         border: OutlineInputBorder(),
       ),
+      validator: validator,
+      controller: controller,
     );
   }
 
-  Widget _buildSignUpButtonSection(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: 10),
-      child: FlatButton(
-        padding: EdgeInsets.all(0),
-        onPressed: () {
-          _signUp(context);
-        },
-        child: Container(
-          decoration: BoxDecoration(
-              color: Color(0xFF177E89),
-              borderRadius: BorderRadius.all(Radius.circular(5.0))),
-          child: Center(
-            child: Padding(
-              padding: const EdgeInsets.all(15),
-              child: Text(
-                AppStrings.signUp,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 15,
+  Widget _buildForm(BuildContext context) {
+    return Form(
+      key: _formKey,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          _buildEmailAddressTextSection(),
+          _buildEmailTextFormField(),
+          _buildPasswordTextSection(),
+          _buildPasswordTextFormField(),
+          _buildConfirmPasswordTextSection(),
+          _buildConfirmPasswordTextFormField(),
+          SizedBox(
+            height: 30.0,
+          ),
+          FlatButton(
+            padding: EdgeInsets.all(0),
+            onPressed: () {
+              if (_formKey.currentState.validate()) {
+                _signUp(context);
+              }
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                color: Color(0xFF177E89),
+                borderRadius: BorderRadius.all(Radius.circular(5.0)),
+              ),
+              child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(15),
+                  child: Text(
+                    AppStrings.signUp,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 15,
+                    ),
+                  ),
                 ),
               ),
             ),
-          ),
-        ),
+          )
+        ],
       ),
     );
   }
@@ -271,16 +325,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       _buildSignUpWithTextSection(),
                       _authenticationSignUpButton(),
                       _buildDividerSection(),
-                      _buildEmailAddressTextSection(),
-                      _textFormSectionEmail(),
-                      _buildPasswordTextSection(),
-                      _textFormSectionPassword(),
-                      _buildConfirmPasswordTextSection(),
-                      _textFormSectionConfirmPassword(),
-                      SizedBox(
-                        height: 20.0,
-                      ),
-                      _buildSignUpButtonSection(context)
+                      _buildForm(context)
                     ],
                   ),
                 ),
