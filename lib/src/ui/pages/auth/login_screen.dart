@@ -16,6 +16,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   bool _isLoading = false;
+  final _formKey = GlobalKey<FormState>();
 
   Widget _buildLogInWithTextSection() {
     return Padding(
@@ -126,7 +127,7 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget _buildEmailAddressTextSection() {
+  Widget _buildEmailAddressTextFormField() {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 10),
       child: Text(
@@ -144,7 +145,7 @@ class _LoginScreenState extends State<LoginScreen> {
       isTextObscure: false,
       textInputType: TextInputType.emailAddress);
 
-  Widget _buildPasswordTextSection() {
+  Widget _buildPasswordTextFormField() {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 10),
       child: Text(
@@ -165,6 +166,16 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget _buildTextForm(
       {TextInputType textInputType, String hintText, bool isTextObscure}) {
     return TextFormField(
+      validator: (value) {
+        if (value.isEmpty) {
+          if (hintText == AppStrings.emailAddress) {
+            return AppStrings.loginEmailErrorMessage;
+          } else if (hintText == AppStrings.password) {
+            return AppStrings.loginPasswordErrorMessage;
+          }
+        }
+        return null;
+      },
       obscureText: isTextObscure,
       keyboardType: textInputType,
       decoration: InputDecoration(
@@ -203,30 +214,42 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Widget _buildLogInButtonSection(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: 10),
-      child: FlatButton(
-        padding: EdgeInsets.all(0),
-        onPressed: () {
-          _login(context);
-        },
-        child: Container(
-          decoration: BoxDecoration(
-              color: Color(0xFF177E89),
-              borderRadius: BorderRadius.all(Radius.circular(5.0))),
-          child: Center(
-            child: Padding(
-              padding: const EdgeInsets.all(15),
-              child: Text(
-                AppStrings.logIn,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 15,
+    return Form(
+      key: _formKey,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          _buildEmailAddressTextFormField(),
+          _textFormSectionEmail(),
+          _buildPasswordTextFormField(),
+          _textFormSectionPassword(),
+          SizedBox(height: 30.0),
+          FlatButton(
+            padding: EdgeInsets.all(0),
+            onPressed: () {
+              if (_formKey.currentState.validate()) {
+                _login(context);
+              }
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                  color: Color(0xFF177E89),
+                  borderRadius: BorderRadius.all(Radius.circular(5.0))),
+              child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(15),
+                  child: Text(
+                    AppStrings.logIn,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 15,
+                    ),
+                  ),
                 ),
               ),
             ),
           ),
-        ),
+        ],
       ),
     );
   }
@@ -279,10 +302,6 @@ class _LoginScreenState extends State<LoginScreen> {
                     _buildLogInWithTextSection(),
                     _authenticationSignInButton(),
                     _buildDividerSection(),
-                    _buildEmailAddressTextSection(),
-                    _textFormSectionEmail(),
-                    _buildPasswordTextSection(),
-                    _textFormSectionPassword(),
                     _buildForgotPasswordClickableTextSection(context),
                     _buildLogInButtonSection(context),
                   ],
