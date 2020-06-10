@@ -16,9 +16,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  final TextEditingController _password = TextEditingController();
-  final TextEditingController _confirmPassword = TextEditingController();
-  final TextEditingController _email = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _confirmPasswordController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
 
   bool _isLoading = false;
 
@@ -145,7 +145,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   Widget _buildEmailTextFormField() => _buildTextForm(
-      controller: _email,
+      controller: _emailController,
       hintText: AppStrings.emailAddress,
       isTextObscure: false,
       textInputType: TextInputType.emailAddress,
@@ -170,7 +170,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   Widget _buildPasswordTextFormField() => _buildTextForm(
-        controller: _password,
+        controller: _passwordController,
         hintText: AppStrings.password,
         isTextObscure: true,
         textInputType: TextInputType.visiblePassword,
@@ -196,7 +196,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   Widget _buildConfirmPasswordTextFormField() => _buildTextForm(
-      controller: _confirmPassword,
+      controller: _confirmPasswordController,
       hintText: AppStrings.confirmPassword,
       isTextObscure: true,
       textInputType: TextInputType.visiblePassword,
@@ -204,7 +204,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         if (value.isEmpty) {
           return AppStrings.confirmPassword + AppStrings.emptyFieldErrorMessage;
         }
-        if (value != _password.text) {
+        if (value != _passwordController.text) {
           return AppStrings.doesNotMatchErrorMessage + AppStrings.password;
         }
         return null;
