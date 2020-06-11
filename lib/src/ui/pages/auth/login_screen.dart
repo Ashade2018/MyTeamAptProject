@@ -143,7 +143,8 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget _textFormSectionEmail() => _buildTextForm(
       hintText: AppStrings.emailAddress,
       isTextObscure: false,
-      textInputType: TextInputType.emailAddress);
+      textInputType: TextInputType.emailAddress,
+      errorCheck: AppStrings.loginEmailErrorMessage);
 
   Widget _buildPasswordTextFormField() {
     return Padding(
@@ -161,18 +162,18 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget _textFormSectionPassword() => _buildTextForm(
       hintText: AppStrings.password,
       isTextObscure: true,
-      textInputType: TextInputType.visiblePassword);
+      textInputType: TextInputType.visiblePassword,
+      errorCheck: AppStrings.loginPasswordErrorMessage);
 
   Widget _buildTextForm(
-      {TextInputType textInputType, String hintText, bool isTextObscure}) {
+      {@required TextInputType textInputType,
+      @required String hintText,
+      @required bool isTextObscure,
+      @required String errorCheck}) {
     return TextFormField(
       validator: (value) {
         if (value.isEmpty) {
-          if (hintText == AppStrings.emailAddress) {
-            return AppStrings.loginEmailErrorMessage;
-          } else if (hintText == AppStrings.password) {
-            return AppStrings.loginPasswordErrorMessage;
-          }
+          return errorCheck;
         }
         return null;
       },
