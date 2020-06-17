@@ -78,6 +78,12 @@ class LeagueTab extends StatelessWidget {
     );
   }
 
+  Widget _buildSponsorSection(BuildContext context) {
+    return Container(
+      child: _buildLeagueItemTile(title: AppStrings.sponsor, onTap: () {}),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return TabBackgroundWrapper(
@@ -93,6 +99,10 @@ class LeagueTab extends StatelessWidget {
             height: 24,
           ),
           _buildInformationSection(context),
+          SizedBox(
+            height: 24,
+          ),
+          _buildSponsorSection(context)
         ],
       ),
     );
