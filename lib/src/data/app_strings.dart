@@ -79,4 +79,5 @@ class AppStrings {
   static const String forward = 'Forward';
   static const String sponsors = 'Sponsors';
   static const String emirates = 'Emirates';
+  static const String sponsor = 'Sponsors';
 }
