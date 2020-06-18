@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:league_app/src/data/app_assets.dart';
 import 'package:league_app/src/data/app_colors.dart';
@@ -13,7 +14,7 @@ class SponsorsScreen extends StatelessWidget {
       appBar: AppBar(
           backgroundColor: AppColors.backgroundColor,
           title:
-              Text(AppStrings.sponsors, style: TextStyle(color: Colors.white))),
+          Text(AppStrings.sponsors, style: TextStyle(color: Colors.white))),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0.0),
         child: ListView.builder(
@@ -53,6 +54,11 @@ class SponsorsScreen extends StatelessWidget {
           style: TextStyle(
               fontSize: 12, color: Colors.white, fontWeight: FontWeight.w600),
         ),
+
+        trailing: IconButton(icon: Icon(Icons.open_in_browser,),
+          color: Colors.white,
+          onPressed: () {},),
+
       ),
     );
   }
