@@ -30,7 +30,7 @@ class LeagueTab extends StatelessWidget {
   Widget _buildLeagueItemTile(
       {@required String title, @required void Function() onTap}) {
     return Card(
-      color: AppColors.backgroundColorElevated12,
+      color: AppColors.backgroundColorElevated16,
       child: ListTile(
         onTap: onTap,
         title: Text(

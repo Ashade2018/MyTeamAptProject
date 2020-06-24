@@ -43,7 +43,7 @@ class TeamsScreen extends StatelessWidget {
           AppStrings.teams,
           style: TextStyle(color: Colors.white),
         ),
-        backgroundColor: AppColors.backgroundColorElevated12,
+        backgroundColor: AppColors.backgroundColorElevated16,
       ),
       body: ListView.builder(
           padding: const EdgeInsets.fromLTRB(16.0, 32.0, 16.0, 16.0),
