@@ -14,7 +14,7 @@ class SponsorsScreen extends StatelessWidget {
       appBar: AppBar(
           backgroundColor: AppColors.backgroundColor,
           title:
-          Text(AppStrings.sponsors, style: TextStyle(color: Colors.white))),
+              Text(AppStrings.sponsors, style: TextStyle(color: Colors.white))),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0.0),
         child: ListView.builder(
@@ -41,7 +41,7 @@ class SponsorsScreen extends StatelessWidget {
       child: ListTile(
         dense: true,
         onTap: () {},
-        contentPadding: EdgeInsets.only(left: 0, bottom: 0.0),
+        contentPadding: EdgeInsets.symmetric(horizontal: 0.0, vertical: 4.0),
         leading: SizedBox(
           height: 50.0,
           width: 50.0,
@@ -52,13 +52,15 @@ class SponsorsScreen extends StatelessWidget {
         title: Text(
           AppStrings.emirates,
           style: TextStyle(
-              fontSize: 12, color: Colors.white, fontWeight: FontWeight.w600),
+              fontSize: 14, color: Colors.white, fontWeight: FontWeight.w500),
         ),
-
-        trailing: IconButton(icon: Icon(Icons.open_in_browser,),
+        trailing: IconButton(
+          icon: Icon(
+            Icons.open_in_browser,
+          ),
           color: Colors.white,
-          onPressed: () {},),
-
+          onPressed: () {},
+        ),
       ),
     );
   }
