@@ -79,4 +79,5 @@ class AppStrings {
   static const String forward = 'Forward';
   static const String loginEmailErrorMessage = 'Email Address Field cannot be empty';
   static const String loginPasswordErrorMessage = 'Password Field cannot be empty';
+  static const String sponsor = 'Sponsors';
 }
