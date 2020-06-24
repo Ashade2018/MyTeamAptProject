@@ -28,6 +28,8 @@ dependencies:
   mockito: ^4.1.1
   pedantic: ^1.8.0+1
   material_design_icons_flutter: ^4.0.5345
+  email_validator: '^1.0.0'
+
 
 
 

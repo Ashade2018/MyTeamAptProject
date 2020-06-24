@@ -1,3 +1,4 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart';
 import 'package:flutter/material.dart';
@@ -141,10 +142,21 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Widget _textFormSectionEmail() => _buildTextForm(
-      hintText: AppStrings.emailAddress,
-      isTextObscure: false,
-      textInputType: TextInputType.emailAddress,
-      errorCheck: AppStrings.loginEmailErrorMessage);
+        hintText: AppStrings.emailAddress,
+        isTextObscure: false,
+        textInputType: TextInputType.emailAddress,
+        validator: (String value) {
+          if (value.isEmpty) {
+            return AppStrings.loginEmailErrorMessage;
+          }
+
+          if (!EmailValidator.validate(value)) {
+            return AppStrings.enterValidEmail;
+          }
+
+          return null;
+        },
+      );
 
   Widget _buildPasswordTextFormField() {
     return Padding(
@@ -163,20 +175,22 @@ class _LoginScreenState extends State<LoginScreen> {
       hintText: AppStrings.password,
       isTextObscure: true,
       textInputType: TextInputType.visiblePassword,
-      errorCheck: AppStrings.loginPasswordErrorMessage);
-
-  Widget _buildTextForm(
-      {@required TextInputType textInputType,
-      @required String hintText,
-      @required bool isTextObscure,
-      @required String errorCheck}) {
-    return TextFormField(
-      validator: (value) {
+      validator: (String value) {
         if (value.isEmpty) {
-          return errorCheck;
+          return AppStrings.loginPasswordErrorMessage;
         }
+
         return null;
-      },
+      });
+
+  Widget _buildTextForm({
+    @required TextInputType textInputType,
+    @required String hintText,
+    @required bool isTextObscure,
+    @required String Function(String) validator,
+  }) {
+    return TextFormField(
+      validator: validator,
       obscureText: isTextObscure,
       keyboardType: textInputType,
       decoration: InputDecoration(
@@ -296,7 +310,7 @@ class _LoginScreenState extends State<LoginScreen> {
             color: Color(0xFF323031),
             child: SafeArea(
               child: Padding(
-                padding: const EdgeInsets.all(20.0),
+                padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0.0),
                 child: ListView(
                   shrinkWrap: true,
                   children: <Widget>[
