@@ -3,6 +3,7 @@ import 'package:league_app/src/data/app_colors.dart';
 import 'package:league_app/src/data/app_strings.dart';
 import 'package:league_app/src/ui/pages/main/tabs/league/fixtures_screen.dart';
 import 'package:league_app/src/ui/pages/main/tabs/league/news_screen.dart';
+import 'package:league_app/src/ui/pages/main/tabs/league/sponsors_screen.dart';
 import 'package:league_app/src/ui/pages/main/tabs/league/teams_screen.dart';
 import 'package:league_app/src/ui/widgets/tab_background_wrapper.dart';
 
@@ -80,7 +81,12 @@ class LeagueTab extends StatelessWidget {
 
   Widget _buildSponsorSection(BuildContext context) {
     return Container(
-      child: _buildLeagueItemTile(title: AppStrings.sponsor, onTap: () {}),
+      child: _buildLeagueItemTile(
+          title: AppStrings.sponsor,
+          onTap: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => SponsorsScreen()));
+          }),
     );
   }
 
