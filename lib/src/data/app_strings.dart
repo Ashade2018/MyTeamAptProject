@@ -1,3 +1,5 @@
+import 'package:flutter/src/widgets/framework.dart';
+
 class AppStrings {
   static const String bigLeague = 'Big League';
   static const String appTitle = bigLeague;
@@ -77,4 +79,6 @@ class AppStrings {
   static const String forward = 'Forward';
   static const String emptyFieldErrorMessage = ' field cannot be empty';
   static const String doesNotMatchErrorMessage = 'does not match ';
+
+  static const String enterValidEmail = 'Email is not valid';
 }
