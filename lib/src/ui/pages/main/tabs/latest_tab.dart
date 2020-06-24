@@ -45,7 +45,7 @@ class _LatestTabState extends State<LatestTab> {
       'points': 82
     },
     {
-      'position': 1,
+      'position': 2,
       'club': 'Man City',
       'imageAsset': AppAssets.manCityClubIconImage,
       'played': 57,
@@ -53,7 +53,7 @@ class _LatestTabState extends State<LatestTab> {
       'points': 57
     },
     {
-      'position': 1,
+      'position': 3,
       'club': 'Leicester',
       'imageAsset': AppAssets.leicesterClubIconImage,
       'played': 53,
@@ -61,7 +61,7 @@ class _LatestTabState extends State<LatestTab> {
       'points': 53
     },
     {
-      'position': 1,
+      'position': 4,
       'club': 'Chelsea',
       'imageAsset': AppAssets.chelseaClubIconImage,
       'played': 48,
@@ -69,7 +69,7 @@ class _LatestTabState extends State<LatestTab> {
       'points': 48
     },
     {
-      'position': 1,
+      'position': 5,
       'club': 'Man Utd',
       'imageAsset': AppAssets.manUtdClubIconImage,
       'played': 45,

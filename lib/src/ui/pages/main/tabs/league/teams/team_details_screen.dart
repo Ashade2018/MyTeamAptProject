@@ -7,7 +7,7 @@ import 'package:league_app/src/data/app_strings.dart';
 class TeamDetailScreen extends StatelessWidget {
   Widget _buildDescriptionCard() {
     return Card(
-      color: AppColors.backgroundColorElevated12,
+      color: AppColors.backgroundColorElevated16,
       margin: EdgeInsets.symmetric(horizontal: 0.0),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 12),
@@ -42,7 +42,7 @@ class TeamDetailScreen extends StatelessWidget {
 
   Widget _buildOverviewCard() {
     return Card(
-      color: AppColors.backgroundColorElevated12,
+      color: AppColors.backgroundColorElevated16,
       margin: EdgeInsets.symmetric(horizontal: 0.0),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 12),

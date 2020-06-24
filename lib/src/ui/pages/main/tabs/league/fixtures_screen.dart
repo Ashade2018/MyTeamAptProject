@@ -30,7 +30,7 @@ class FixturesScreen extends StatelessWidget {
   Widget _buildFixturesCard(
       {@required String title, @required Widget detailWidget}) {
     return Card(
-      color: AppColors.backgroundColorElevated12,
+      color: AppColors.backgroundColorElevated16,
       margin: EdgeInsets.symmetric(horizontal: 0.0),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 12),
@@ -185,7 +185,7 @@ class FixturesScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.backgroundColor,
       appBar: AppBar(
-        backgroundColor: AppColors.backgroundColorElevated12,
+        backgroundColor: AppColors.backgroundColorElevated16,
         title: Text(
           AppStrings.fixtures,
           style: TextStyle(color: AppColors.white),

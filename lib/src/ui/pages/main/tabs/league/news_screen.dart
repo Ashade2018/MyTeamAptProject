@@ -43,7 +43,7 @@ class _NewsScreenState extends State<NewsScreen> {
           AppStrings.news,
           style: TextStyle(color: Colors.white),
         ),
-        backgroundColor: AppColors.backgroundColorElevated12,
+        backgroundColor: AppColors.backgroundColorElevated16,
       ),
       body: ListView(
         padding: EdgeInsets.fromLTRB(16.0, 64.0, 16.0, 0.0),

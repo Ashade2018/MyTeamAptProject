@@ -4,8 +4,6 @@ import 'package:mockito/mockito.dart';
 import 'package:test/test.dart';
 import 'package:http/http.dart';
 
-import 'reset_password_service_test.dart';
-
 class MockClient extends Mock implements Client {}
 
 void main() {
