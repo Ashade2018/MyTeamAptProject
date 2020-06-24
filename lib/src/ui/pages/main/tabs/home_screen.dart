@@ -21,7 +21,7 @@ class HomeScreen extends StatelessWidget {
         body: Column(children: <Widget>[
           _buildNewsTopRow(),
           ..._listOfNewsCards,
-          _buildLeagueTableContainer()
+          _buildLeagueTableContainer(context)
         ]));
   }
 
@@ -50,190 +50,72 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildLeagueTableContainer() {
-    return Container(
-        color: Colors.grey.shade800,
-        child: AspectRatio(
-          aspectRatio: 5 / 3,
-          child: Padding(
-            padding:
-                const EdgeInsets.symmetric(horizontal: 8.0, vertical: 12.0),
-            child: Column(
-              children: <Widget>[
-                Align(
-                  alignment: Alignment.topLeft,
-                  child: Text(
-                    AppStrings.leagueTableTitle,
-                    style: TextStyle(color: Colors.white, fontSize: 16),
-                  ),
+  Widget _buildLeagueTableContainer(BuildContext context) {
+    return Card(
+        color: AppColors.backgroundColorElevated12,
+        margin: EdgeInsets.symmetric(horizontal: 0.0),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 12),
+          child: Column(
+            children: <Widget>[
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  AppStrings.leagueTableTitle,
+                  style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w500),
                 ),
-                SingleChildScrollView(
-                  child: DataTable(
-                    dataRowHeight: 50.0,
-                    headingRowHeight: 24,
-                    columns: const <DataColumn>[
-                      DataColumn(
-                        label: Text(
-                          AppStrings.leagueTableTitlePos,
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                      DataColumn(
-                        label: Text(
-                          AppStrings.leagueTableTitleClub,
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                      DataColumn(
-                        label: Text(
-                          AppStrings.leagueTableTitleP,
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                      DataColumn(
-                        label: Text(
-                          AppStrings.leagueTableTitleGD,
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                      DataColumn(
-                        label: Text(
-                          AppStrings.leagueTableTitlePts,
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                    ],
-                    rows: <DataRow>[
-                      DataRow(cells: <DataCell>[
-                        DataCell(Text('1',
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 14))),
-                        DataCell(_buildTableClubCell(
-                            AppAssets.liverpoolClubIconImage,
-                            AppStrings.liverpoolClub)),
-                        DataCell(Text('82',
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 12))),
-                        DataCell(Text('82',
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 12))),
-                        DataCell(Text('82',
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 12))),
-                      ]),
-                      DataRow(cells: <DataCell>[
-                        DataCell(Text('2',
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 14))),
-                        DataCell(_buildTableClubCell(
-                            AppAssets.manCityClubIconImage,
-                            AppStrings.manCityClub)),
-                        DataCell(Text('57',
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 12))),
-                        DataCell(Text('57',
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 12))),
-                        DataCell(Text('57',
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 12))),
-                      ]),
-                      DataRow(cells: <DataCell>[
-                        DataCell(Text('3',
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 14))),
-                        DataCell(_buildTableClubCell(
-                            AppAssets.leicesterClubIconImage,
-                            AppStrings.leicesterClub)),
-                        DataCell(Text('53',
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 12))),
-                        DataCell(Text('53',
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 12))),
-                        DataCell(Text('53',
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 12))),
-                      ]),
-                      DataRow(cells: <DataCell>[
-                        DataCell(Text('4',
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 14))),
-                        DataCell(_buildTableClubCell(
-                            AppAssets.chelseaClubIconImage,
-                            AppStrings.chelseaClub)),
-                        DataCell(Text('48',
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 12))),
-                        DataCell(Text('48',
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 12))),
-                        DataCell(Text('48',
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 12))),
-                      ]),
-                      DataRow(cells: <DataCell>[
-                        DataCell(Text('5',
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 14))),
-                        DataCell(_buildTableClubCell(
-                            AppAssets.manUtdClubIconImage,
-                            AppStrings.manUtdClub)),
-                        DataCell(Text('45',
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 12))),
-                        DataCell(Text('45',
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 12))),
-                        DataCell(Text('45',
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 12))),
-                      ])
-                    ],
+              ),
+              SizedBox(height: 16.0),
+              Row(
+                children: <Widget>[
+                  Expanded(
+                    flex: 2,
+                    child: Placeholder(),
                   ),
+                  Expanded(
+                    flex: 5,
+                    child: Placeholder(),
+                  ),
+                  Expanded(
+                    child: Placeholder(),
+                  ),
+                  Expanded(
+                    child: Placeholder(),
+                  ),
+                  Expanded(
+                    child: Placeholder(),
+                  ),
+                ],
+              ),
+              SizedBox(height: 16.0),
+              Align(
+                alignment: Alignment.centerRight,
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    Text(
+                      AppStrings.fullTable,
+                      style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w500),
+                    ),
+                    SizedBox(
+                      width: 4.0,
+                    ),
+                    Icon(
+                      Icons.arrow_forward,
+                      color: Colors.white,
+                      size: 16.0,
+                    )
+                  ],
                 ),
-                Align(
-                    alignment: Alignment.centerRight,
-                    child:
-                    _fullTableSection(
-                        Icons.arrow_forward, AppStrings.fullTable)
-                )
-              ],
-            ),
+              )
+            ],
           ),
         ));
-  }
-
-  Widget _buildTableClubCell(String imageUrl, String clubName) {
-    return Row(
-      children: <Widget>[
-        Image.asset(imageUrl),
-        SizedBox(
-          width: 12.0,
-        ),
-        Text(
-          clubName,
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 12.0,
-          ),
-        )
-      ],
-    );
-  }
-
-  Widget _fullTableSection(IconData icon, String text) {
-    return Row(
-      children: <Widget>[
-        Text(text, style: TextStyle(color: Colors.white, fontSize: 12)),
-        SizedBox(
-          width: 11,
-        ),
-        IconButton(
-          icon: Icon(icon), color: Colors.white,
-          onPressed: () {},
-        )
-      ],
-    );
   }
 }
