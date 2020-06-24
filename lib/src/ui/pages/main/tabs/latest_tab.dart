@@ -3,16 +3,37 @@ import 'package:flutter/material.dart';
 import 'package:league_app/src/data/app_assets.dart';
 import 'package:league_app/src/data/app_colors.dart';
 import 'package:league_app/src/data/app_strings.dart';
+import 'package:league_app/src/ui/pages/main/tabs/league/news/news_details_screen.dart';
 import 'package:league_app/src/ui/widgets/news_card_widget.dart';
 import 'package:league_app/src/ui/widgets/tab_background_wrapper.dart';
 
-class HomeScreen extends StatelessWidget {
-  final _listOfNewsCards = List.generate(
-    3,
-    (_) => NewsCard(
+class LatestTab extends StatefulWidget {
+  @override
+  _LatestTabState createState() => _LatestTabState();
+}
+
+class _LatestTabState extends State<LatestTab> {
+  List<NewsCard> _listOfNewsCards;
+
+  void _navigateToNewsDetailsScreen() {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (BuildContext context) => NewsDetailsScreen()));
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _listOfNewsCards = List.generate(
+      3,
+      (_) => NewsCard(
         imageUrl: AppAssets.newsCardImageBackground,
-        title: AppStrings.homeScreenNewsTitle),
-  );
+        title: AppStrings.homeScreenNewsTitle,
+        onTap: _navigateToNewsDetailsScreen,
+      ),
+    );
+  }
 
   final List<Map<String, dynamic>> _tableTeamList = [
     {
@@ -60,7 +81,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TabBackgroundWrapper(
-        title: AppStrings.appTitle,
+        title: AppStrings.latest,
         body: Column(children: <Widget>[
           _buildNewsTopRow(),
           ..._listOfNewsCards,

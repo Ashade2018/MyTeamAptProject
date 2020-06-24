@@ -1,3 +1,4 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart';
 import 'package:flutter/material.dart';
@@ -8,8 +9,6 @@ import 'package:league_app/src/data/app_colors.dart';
 import 'package:league_app/src/services/login_service.dart';
 import 'package:league_app/src/ui/pages/main/main_screen.dart';
 
-
-
 class LoginScreen extends StatefulWidget {
   @override
   _LoginScreenState createState() => _LoginScreenState();
@@ -18,6 +17,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   bool _isLoading = false;
+  final _formKey = GlobalKey<FormState>();
 
   Widget _buildLogInWithTextSection() {
     return Padding(
@@ -128,7 +128,7 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget _buildEmailAddressTextSection() {
+  Widget _buildEmailAddressTextFormField() {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 10),
       child: Text(
@@ -141,9 +141,24 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget _textFormSectionEmail() => _buildTextForm(hintText: AppStrings.emailAddress, isTextObscure: false, textInputType: TextInputType.emailAddress);
+  Widget _textFormSectionEmail() => _buildTextForm(
+        hintText: AppStrings.emailAddress,
+        isTextObscure: false,
+        textInputType: TextInputType.emailAddress,
+        validator: (String value) {
+          if (value.isEmpty) {
+            return AppStrings.loginEmailErrorMessage;
+          }
 
-  Widget _buildPasswordTextSection() {
+          if (!EmailValidator.validate(value)) {
+            return AppStrings.enterValidEmail;
+          }
+
+          return null;
+        },
+      );
+
+  Widget _buildPasswordTextFormField() {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 10),
       child: Text(
@@ -156,11 +171,26 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget _textFormSectionPassword() => _buildTextForm(hintText: AppStrings.password, isTextObscure: true, textInputType: TextInputType.visiblePassword);
+  Widget _textFormSectionPassword() => _buildTextForm(
+      hintText: AppStrings.password,
+      isTextObscure: true,
+      textInputType: TextInputType.visiblePassword,
+      validator: (String value) {
+        if (value.isEmpty) {
+          return AppStrings.loginPasswordErrorMessage;
+        }
 
-  Widget _buildTextForm(
-      {TextInputType textInputType, String hintText, bool isTextObscure}) {
+        return null;
+      });
+
+  Widget _buildTextForm({
+    @required TextInputType textInputType,
+    @required String hintText,
+    @required bool isTextObscure,
+    @required String Function(String) validator,
+  }) {
     return TextFormField(
+      validator: validator,
       obscureText: isTextObscure,
       keyboardType: textInputType,
       decoration: InputDecoration(
@@ -199,36 +229,47 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Widget _buildLogInButtonSection(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: 10),
-      child: FlatButton(
-        padding: EdgeInsets.all(0),
-        onPressed: () {
-          _login(context);
-        },
-        child: Container(
-          decoration: BoxDecoration(
-              color: Color(0xFF177E89),
-              borderRadius: BorderRadius.all(Radius.circular(5.0))),
-          child: Center(
-            child: Padding(
-              padding: const EdgeInsets.all(15),
-              child: Text(
-                AppStrings.logIn,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 15,
+    return Form(
+      key: _formKey,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          _buildEmailAddressTextFormField(),
+          _textFormSectionEmail(),
+          _buildPasswordTextFormField(),
+          _textFormSectionPassword(),
+          SizedBox(height: 30.0),
+          FlatButton(
+            padding: EdgeInsets.all(0),
+            onPressed: () {
+              if (_formKey.currentState.validate()) {
+                _login(context);
+              }
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                  color: Color(0xFF177E89),
+                  borderRadius: BorderRadius.all(Radius.circular(5.0))),
+              child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(15),
+                  child: Text(
+                    AppStrings.logIn,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 15,
+                    ),
+                  ),
                 ),
               ),
             ),
           ),
-        ),
+        ],
       ),
     );
   }
 
   Future<void> _login(BuildContext context) async {
-
     setState(() {
       _isLoading = true;
     });
@@ -242,8 +283,8 @@ class _LoginScreenState extends State<LoginScreen> {
     });
 
     if (loginStatus) {
-      Navigator.push(context,
-          MaterialPageRoute(builder: (context) => MainScreen()));
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => MainScreen()));
     } else {
       final SnackBar snackBar = SnackBar(
           content: Text(
@@ -261,7 +302,7 @@ class _LoginScreenState extends State<LoginScreen> {
       key: _scaffoldKey,
       appBar: AppBar(
           backgroundColor: AppColors.backgroundColor,
-          title: Text(AppStrings.logIn)),
+          title: Text(AppStrings.logIn, style: TextStyle(color: Colors.white))),
       body: Stack(
         children: <Widget>[
           Container(
@@ -269,17 +310,13 @@ class _LoginScreenState extends State<LoginScreen> {
             color: Color(0xFF323031),
             child: SafeArea(
               child: Padding(
-                padding: const EdgeInsets.all(20.0),
+                padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0.0),
                 child: ListView(
                   shrinkWrap: true,
                   children: <Widget>[
                     _buildLogInWithTextSection(),
                     _authenticationSignInButton(),
                     _buildDividerSection(),
-                    _buildEmailAddressTextSection(),
-                    _textFormSectionEmail(),
-                    _buildPasswordTextSection(),
-                    _textFormSectionPassword(),
                     _buildForgotPasswordClickableTextSection(context),
                     _buildLogInButtonSection(context),
                   ],

@@ -1,3 +1,4 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:league_app/src/data/app_colors.dart';
 import 'package:league_app/src/data/app_strings.dart';
@@ -13,6 +14,13 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _confirmPasswordController =
+      TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
 
   bool _isLoading = false;
 
@@ -138,10 +146,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 
-  Widget _textFormSectionEmail() => _buildTextForm(
+  Widget _buildEmailTextFormField() => _buildTextForm(
+      controller: _emailController,
       hintText: AppStrings.emailAddress,
       isTextObscure: false,
-      textInputType: TextInputType.emailAddress);
+      textInputType: TextInputType.emailAddress,
+      validator: (String value) {
+        if (value.isEmpty) {
+          return AppStrings.emailAddress + AppStrings.emptyFieldErrorMessage;
+        }
+        if (!EmailValidator.validate(value)) {
+          return AppStrings.enterValidEmail;
+        }
+        return null;
+      });
 
   Widget _buildPasswordTextSection() {
     return Padding(
@@ -156,10 +174,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 
-  Widget _textFormSectionPassword() => _buildTextForm(
-      hintText: AppStrings.password,
-      isTextObscure: true,
-      textInputType: TextInputType.visiblePassword);
+  Widget _buildPasswordTextFormField() => _buildTextForm(
+        controller: _passwordController,
+        hintText: AppStrings.password,
+        isTextObscure: true,
+        textInputType: TextInputType.visiblePassword,
+        validator: (String value) {
+          if (value.isEmpty) {
+            return AppStrings.password + AppStrings.emptyFieldErrorMessage;
+          }
+
+          return null;
+        },
+      );
 
   Widget _buildConfirmPasswordTextSection() {
     return Padding(
@@ -174,13 +201,27 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 
-  Widget _textFormSectionConfirmPassword() => _buildTextForm(
-      hintText: AppStrings.password,
+  Widget _buildConfirmPasswordTextFormField() => _buildTextForm(
+      controller: _confirmPasswordController,
+      hintText: AppStrings.confirmPassword,
       isTextObscure: true,
-      textInputType: TextInputType.visiblePassword);
+      textInputType: TextInputType.visiblePassword,
+      validator: (String value) {
+        if (value.isEmpty) {
+          return AppStrings.confirmPassword + AppStrings.emptyFieldErrorMessage;
+        }
+        if (value != _passwordController.text) {
+          return AppStrings.doesNotMatchErrorMessage + AppStrings.password;
+        }
+        return null;
+      });
 
   Widget _buildTextForm(
-      {TextInputType textInputType, String hintText, bool isTextObscure}) {
+      {TextInputType textInputType,
+      String hintText,
+      bool isTextObscure,
+      String Function(String) validator,
+      TextEditingController controller}) {
     return TextFormField(
       obscureText: isTextObscure,
       keyboardType: textInputType,
@@ -190,38 +231,58 @@ class _SignUpScreenState extends State<SignUpScreen> {
         hintText: hintText,
         border: OutlineInputBorder(),
       ),
+      validator: validator,
+      controller: controller,
     );
   }
 
-  Widget _buildSignUpButtonSection(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: 10),
-      child: FlatButton(
-        padding: EdgeInsets.all(0),
-        onPressed: (){_signUp(context);},
-        child: Container(
-          decoration: BoxDecoration(
-              color: Color(0xFF177E89),
-              borderRadius: BorderRadius.all(Radius.circular(5.0))),
-          child: Center(
-            child: Padding(
-              padding: const EdgeInsets.all(15),
-              child: Text(
-                AppStrings.signUp,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 15,
+  Widget _buildForm(BuildContext context) {
+    return Form(
+      key: _formKey,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          _buildEmailAddressTextSection(),
+          _buildEmailTextFormField(),
+          _buildPasswordTextSection(),
+          _buildPasswordTextFormField(),
+          _buildConfirmPasswordTextSection(),
+          _buildConfirmPasswordTextFormField(),
+          SizedBox(
+            height: 30.0,
+          ),
+          FlatButton(
+            padding: EdgeInsets.all(0),
+            onPressed: () {
+              if (_formKey.currentState.validate()) {
+                _signUp(context);
+              }
+            },
+            child: Container(
+              decoration: BoxDecoration(
+                color: Color(0xFF177E89),
+                borderRadius: BorderRadius.all(Radius.circular(5.0)),
+              ),
+              child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(15),
+                  child: Text(
+                    AppStrings.signUp,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 15,
+                    ),
+                  ),
                 ),
               ),
             ),
-          ),
-        ),
+          )
+        ],
       ),
     );
   }
 
   Future<void> _signUp(BuildContext context) async {
-
     setState(() {
       _isLoading = true;
     });
@@ -235,8 +296,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
     });
 
     if (signUpStatus) {
-      Navigator.push(context,
-          MaterialPageRoute(builder: (context) => MainScreen()));
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => MainScreen()));
     } else {
       final SnackBar snackBar = SnackBar(
           content: Text(
@@ -254,7 +315,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
         key: _scaffoldKey,
         appBar: AppBar(
             backgroundColor: AppColors.backgroundColor,
-            title: Text(AppStrings.signUp)),
+            title:
+                Text(AppStrings.signUp, style: TextStyle(color: Colors.white))),
         body: Stack(
           children: <Widget>[
             Container(
@@ -262,23 +324,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
               color: AppColors.backgroundColor,
               child: SafeArea(
                 child: Padding(
-                  padding: const EdgeInsets.all(20.0),
+                  padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0.0),
                   child: ListView(
                     shrinkWrap: true,
                     children: <Widget>[
                       _buildSignUpWithTextSection(),
                       _authenticationSignUpButton(),
                       _buildDividerSection(),
-                      _buildEmailAddressTextSection(),
-                      _textFormSectionEmail(),
-                      _buildPasswordTextSection(),
-                      _textFormSectionPassword(),
-                      _buildConfirmPasswordTextSection(),
-                      _textFormSectionConfirmPassword(),
-                      SizedBox(
-                        height: 20.0,
-                      ),
-                      _buildSignUpButtonSection(context)
+                      _buildForm(context)
                     ],
                   ),
                 ),

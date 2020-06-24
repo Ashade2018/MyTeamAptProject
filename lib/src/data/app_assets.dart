@@ -7,4 +7,10 @@ class AppAssets {
   static const manUtdClubIconImage = '$_clubIconPath/manutd.png';
   static const liverpoolClubIconImage = '$_clubIconPath/liverpool.png';
   static const leicesterClubIconImage = '$_clubIconPath/leicester.png';
+  static const liverpoolLogo = '$_assetPath/liverpool.png';
+  static const leicesterLogo = '$_assetPath/leicester.png';
+  static const manCityLogo = '$_assetPath/manCity.png';
+  static const tammyAbrahamImage = '$_assetPath/tammy_abraham.png';
+  static const englandFlagImage = '$_assetPath/flag_of_england.png';
+  static const flyEmiratesImage = '$_assetPath/fly_emirates_logo.png';
 }

@@ -8,4 +8,5 @@ class AppColors {
   static final Color backgroundColorElevated24 = 
   Color.alphaBlend(Colors.white.withOpacity(0.24), backgroundColor);
   static final Color accentColor = Color(0xFFFFC857);
+  static const Color white = Color(0xFFFFFFFF);
 }
