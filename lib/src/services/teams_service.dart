@@ -12,20 +12,21 @@ class TeamsService {
   Future<List<Team>> getTeams() async {
     try {
       String url = AppEndpoints.teamsEndpoint;
-
-      //TODO Implement get teams
-
       Response response = await _client.get(url);
 
       if (response.statusCode == 200) {
         String body = response.body;
         List<dynamic> decodedBody = jsonDecode(body);
 
-        List<Team> teams = decodedBody;
-        return teams;
+        List<Team> teamList =
+            decodedBody.map((team) => Team.fromMap(team as Map)).toList();
+
+        return teamList;
+      } else {
+        throw Exception(response.reasonPhrase);
       }
     } catch (e) {
-      //TODO throw an error
+      rethrow;
     }
   }
 }
