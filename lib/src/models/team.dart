@@ -48,4 +48,6 @@ class Team {
         "foundedOn":
             "${foundedOn.year.toString().padLeft(4, '0')}-${foundedOn.month.toString().padLeft(2, '0')}-${foundedOn.day.toString().padLeft(2, '0')}",
       };
+
+  
 }
