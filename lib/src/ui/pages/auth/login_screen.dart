@@ -205,10 +205,8 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget _buildForgotPasswordClickableTextSection(BuildContext context) {
     return FlatButton(
       onPressed: () {
-        Navigator.pushAndRemoveUntil(
-            context,
-            MaterialPageRoute(builder: (context) => ForgotPasswordScreen()),
-            (_) => false);
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => ForgotPasswordScreen()));
       },
       padding: EdgeInsets.all(0),
       child: Padding(
