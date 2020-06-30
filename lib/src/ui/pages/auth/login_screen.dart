@@ -32,7 +32,7 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget _buildAuthButton({String imageAsset, String label}) {
+  Widget _buildAuthButton({@required String imageAsset, @required String label}) {
     return FlatButton(
       padding: EdgeInsets.all(0),
       onPressed: () {},

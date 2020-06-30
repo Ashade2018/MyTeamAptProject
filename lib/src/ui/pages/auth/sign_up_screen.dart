@@ -37,7 +37,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 
-  Widget _buildAuthButton({String imageAsset, String label}) {
+  Widget _buildAuthButton({@required String imageAsset, @required String label}) {
     return FlatButton(
       padding: EdgeInsets.all(0),
       onPressed: null,
@@ -217,11 +217,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
       });
 
   Widget _buildTextForm(
-      {TextInputType textInputType,
-      String hintText,
-      bool isTextObscure,
-      String Function(String) validator,
-      TextEditingController controller}) {
+      {@required TextInputType textInputType,
+      @required String hintText,
+      @required bool isTextObscure,
+      @required String Function(String) validator,
+      @required TextEditingController controller}) {
     return TextFormField(
       obscureText: isTextObscure,
       keyboardType: textInputType,
