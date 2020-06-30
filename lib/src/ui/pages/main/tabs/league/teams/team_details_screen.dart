@@ -3,8 +3,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:league_app/src/data/app_colors.dart';
 import 'package:league_app/src/data/app_strings.dart';
+import 'package:league_app/src/models/team.dart';
 
 class TeamDetailScreen extends StatelessWidget {
+final Team team;
+TeamDetailScreen({Key key, @required this.team}) : super ( key: key);
+
   Widget _buildDescriptionCard() {
     return Card(
       color: AppColors.backgroundColorElevated16,
@@ -28,7 +32,7 @@ class TeamDetailScreen extends StatelessWidget {
               height: 16.0,
             ),
             Text(
-              AppStrings.loremIpsum,
+              team.description,
               style: TextStyle(
                 fontSize: 12,
                 color: Colors.white,
@@ -62,15 +66,15 @@ class TeamDetailScreen extends StatelessWidget {
             Divider(color: Colors.white),
             _buildOverviewInformation(
                 title: AppStrings.fullName,
-                detail: AppStrings.liverpool + AppStrings.foootballClub),
+                detail: team.name + AppStrings.foootballClub),
             Divider(color: Colors.white),
             _buildOverviewInformation(
                 title: AppStrings.nickname,
-                detail: AppStrings.liverpoolNickname),
+                detail: team.alias),
             Divider(color: Colors.white),
             _buildOverviewInformation(
                 title: AppStrings.foundedOn,
-                detail: AppStrings.liverpoolFoundedDate)
+                detail: team.foundedOn.toString())
           ],
         ),
       ),

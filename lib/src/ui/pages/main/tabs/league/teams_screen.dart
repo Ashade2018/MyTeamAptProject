@@ -19,9 +19,9 @@ class _TeamsScreenState extends State<TeamsScreen> {
   bool _isLoading = false;
   List<Team> _teamList = [];
 
-  void _navigateToTeamDetailsScreen(BuildContext context) {
+  void _navigateToTeamDetailsScreen({BuildContext context, @required Team team}) {
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => TeamDetailScreen()));
+        context, MaterialPageRoute(builder: (context) => TeamDetailScreen(team: team,)));
   }
 
   @override
@@ -103,7 +103,7 @@ class _TeamsScreenState extends State<TeamsScreen> {
         Material(
           color: Colors.transparent,
           child: ListTile(
-            onTap: () => _navigateToTeamDetailsScreen(context),
+            onTap: () => _navigateToTeamDetailsScreen(context: context, team: team),
             contentPadding: EdgeInsets.only(left: 0),
             leading: SizedBox(
               height: 30.0,
