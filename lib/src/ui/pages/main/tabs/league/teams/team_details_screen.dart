@@ -3,8 +3,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:league_app/src/data/app_colors.dart';
 import 'package:league_app/src/data/app_strings.dart';
+import 'package:league_app/src/models/team.dart';
+import 'package:intl/intl.dart';
 
 class TeamDetailScreen extends StatelessWidget {
+  final Team team;
+
+  TeamDetailScreen({Key key, @required this.team}) : super(key: key);
+
   Widget _buildDescriptionCard() {
     return Card(
       color: AppColors.backgroundColorElevated16,
@@ -27,11 +33,14 @@ class TeamDetailScreen extends StatelessWidget {
             SizedBox(
               height: 16.0,
             ),
-            Text(
-              AppStrings.loremIpsum,
-              style: TextStyle(
-                fontSize: 12,
-                color: Colors.white,
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                team.description,
+                style: TextStyle(
+                  fontSize: 12,
+                  color: Colors.white,
+                ),
               ),
             )
           ],
@@ -41,6 +50,7 @@ class TeamDetailScreen extends StatelessWidget {
   }
 
   Widget _buildOverviewCard() {
+    DateTime foundedOn = team.foundedOn;
     return Card(
       color: AppColors.backgroundColorElevated16,
       margin: EdgeInsets.symmetric(horizontal: 0.0),
@@ -61,16 +71,15 @@ class TeamDetailScreen extends StatelessWidget {
             SizedBox(height: 16.0),
             Divider(color: Colors.white),
             _buildOverviewInformation(
-                title: AppStrings.fullName,
-                detail: AppStrings.liverpool + AppStrings.foootballClub),
+                title: AppStrings.fullName, detail: team.name),
             Divider(color: Colors.white),
             _buildOverviewInformation(
-                title: AppStrings.nickname,
-                detail: AppStrings.liverpoolNickname),
+                title: AppStrings.nickname, detail: team.alias),
             Divider(color: Colors.white),
             _buildOverviewInformation(
-                title: AppStrings.foundedOn,
-                detail: AppStrings.liverpoolFoundedDate)
+              title: AppStrings.foundedOn,
+              detail: DateFormat('d MMMM yyy').format(foundedOn),
+            )
           ],
         ),
       ),

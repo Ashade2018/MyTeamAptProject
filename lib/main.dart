@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:league_app/src/data/app_strings.dart';
 import 'package:league_app/src/ui/pages/auth/splash_screen.dart';
-import 'package:league_app/src/ui/pages/main/main_screen.dart';
 
 void main() => runApp(MyApp());
 
