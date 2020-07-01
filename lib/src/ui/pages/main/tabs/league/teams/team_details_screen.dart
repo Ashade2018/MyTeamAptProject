@@ -69,7 +69,7 @@ class TeamDetailScreen extends StatelessWidget {
             Divider(color: Colors.white),
             _buildOverviewInformation(
                 title: AppStrings.fullName,
-                detail: team.name + AppStrings.foootballClub),
+                detail: team.name),
             Divider(color: Colors.white),
             _buildOverviewInformation(
                 title: AppStrings.nickname, detail: team.alias),
