@@ -66,7 +66,7 @@ TeamDetailScreen({Key key, @required this.team}) : super ( key: key);
             Divider(color: Colors.white),
             _buildOverviewInformation(
                 title: AppStrings.fullName,
-                detail: team.name + AppStrings.foootballClub),
+                detail: team.name),
             Divider(color: Colors.white),
             _buildOverviewInformation(
                 title: AppStrings.nickname,
