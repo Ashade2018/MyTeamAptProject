@@ -33,11 +33,14 @@ class TeamDetailScreen extends StatelessWidget {
             SizedBox(
               height: 16.0,
             ),
-            Text(
-              team.description,
-              style: TextStyle(
-                fontSize: 12,
-                color: Colors.white,
+            Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                team.description,
+                style: TextStyle(
+                  fontSize: 12,
+                  color: Colors.white,
+                ),
               ),
             )
           ],
@@ -68,8 +71,7 @@ class TeamDetailScreen extends StatelessWidget {
             SizedBox(height: 16.0),
             Divider(color: Colors.white),
             _buildOverviewInformation(
-                title: AppStrings.fullName,
-                detail: team.name),
+                title: AppStrings.fullName, detail: team.name),
             Divider(color: Colors.white),
             _buildOverviewInformation(
                 title: AppStrings.nickname, detail: team.alias),
