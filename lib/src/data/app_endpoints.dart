@@ -1,7 +1,7 @@
 class AppEndpoints {
-  static const _baseUrl = 'https://bigleague-mock-api.herokuapp.com';
-  static const resetPasswordEndpoint = '$_baseUrl/resetPassword';
-  static const loginEndpoint = '$_baseUrl/login';
-  static const signUpEndpoint = '$_baseUrl/signUp';
-  static const teamsEndpoint = '$_baseUrl/teams';
+  static const String  _baseUrl = 'https://bigleague-mock-api.herokuapp.com';
+  static const String  resetPasswordEndpoint = '$_baseUrl/resetPassword';
+  static const String  loginEndpoint = '$_baseUrl/login';
+  static const String  signUpEndpoint = '$_baseUrl/signUp';
+  static const String  teamsEndpoint = '$_baseUrl/teams';
 }
