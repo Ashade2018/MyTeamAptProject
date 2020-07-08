@@ -4,4 +4,5 @@ class AppEndpoints {
   static const String  loginEndpoint = '$_baseUrl/login';
   static const String  signUpEndpoint = '$_baseUrl/signUp';
   static const String  teamsEndpoint = '$_baseUrl/teams';
+  static const String  playersEndPoint = '$_baseUrl/players';
 }
