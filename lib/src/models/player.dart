@@ -2,22 +2,26 @@ import 'package:meta/meta.dart';
 import 'dart:convert';
 
 class Player {
+  final String name;
+  final DateTime dateOfBirth;
+  final String nationality;
+
   Player({
     @required this.name,
     @required this.dateOfBirth,
     @required this.nationality,
   });
 
-  final String name;
-  final DateTime dateOfBirth;
-  final String nationality;
   factory Player.fromJson(String str) => Player.fromMap(json.decode(str));
+
   String toJson() => json.encode(toMap());
+
   factory Player.fromMap(Map<String, dynamic> json) => Player(
         name: json["name"],
         dateOfBirth: DateTime.parse(json["dateOfBirth"]),
         nationality: json["nationality"],
       );
+
   Map<String, dynamic> toMap() => {
         "name": name,
         "dateOfBirth":
