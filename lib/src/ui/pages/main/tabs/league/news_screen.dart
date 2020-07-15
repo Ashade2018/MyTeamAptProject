@@ -1,3 +1,4 @@
+import 'package:http/http.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:league_app/src/data/app_assets.dart';
@@ -5,6 +6,8 @@ import 'package:league_app/src/data/app_colors.dart';
 import 'package:league_app/src/data/app_strings.dart';
 import 'package:league_app/src/ui/pages/main/tabs/league/news/news_details_screen.dart';
 import 'package:league_app/src/ui/widgets/news_card_widget.dart';
+import 'package:league_app/src/models/article.dart';
+import 'package:league_app/src/services/articles_service.dart';
 
 class NewsScreen extends StatefulWidget {
   @override
@@ -12,7 +15,10 @@ class NewsScreen extends StatefulWidget {
 }
 
 class _NewsScreenState extends State<NewsScreen> {
-  List<NewsCard> _listOfNewsCards;
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  bool _isLoading = false;
+
+  List<Article> _articleList = [];
 
   void _navigateToNewsDetailsScreen() {
     Navigator.push(
@@ -24,14 +30,33 @@ class _NewsScreenState extends State<NewsScreen> {
   @override
   void initState() {
     super.initState();
-    _listOfNewsCards = List.generate(
-      10,
-      (_) => NewsCard(
-        imageUrl: AppAssets.newsCardImageBackground,
-        title: AppStrings.homeScreenNewsTitle,
-        onTap: _navigateToNewsDetailsScreen,
-      ),
-    );
+    _fetchArticles();
+  }
+
+  void _fetchArticles() async {
+    setState(() {
+      _isLoading = true;
+    });
+    try {
+      Client client = Client();
+      ArticlesService articlesService = ArticlesService(client);
+      _articleList = await articlesService.getArticles();
+      setState(() {
+        _isLoading = false;
+      });
+    } catch (e) {
+      setState(() {
+        _isLoading = false;
+      });
+
+      final SnackBar snackBar = SnackBar(
+          content: Text(
+            'Could not get news articles.',
+            style: TextStyle(color: Colors.black),
+          ),
+          backgroundColor: Colors.white);
+      _scaffoldKey.currentState.showSnackBar(snackBar);
+    }
   }
 
   @override
@@ -45,10 +70,38 @@ class _NewsScreenState extends State<NewsScreen> {
         ),
         backgroundColor: AppColors.backgroundColorElevated16,
       ),
-      body: ListView(
-        padding: EdgeInsets.fromLTRB(16.0, 64.0, 16.0, 0.0),
-        children: _listOfNewsCards,
+      body: Stack(
+        children: <Widget>[
+          _isLoading
+              ? Center(
+                  child: _buildLoadingIndicator(),
+                )
+              : _articleList.isEmpty
+                  ? Center(
+                      child: Text('No news available',
+                          style: TextStyle(color: Colors.white)),
+                    )
+                  : ListView.builder(
+                      padding: const EdgeInsets.fromLTRB(16.0, 64.0, 16.0, 0.0),
+                      itemCount: _articleList.length,
+                      itemBuilder: (context, index) {
+                        return _buildArticleListTile(context, index: index);
+                      }),
+        ],
       ),
+    );
+  }
+
+  Widget _buildLoadingIndicator() => CircularProgressIndicator(
+        valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+      );
+
+  Widget _buildArticleListTile(BuildContext context, {@required int index}) {
+    Article article = _articleList[index];
+    return NewsCard(
+      imageUrl: article.image,
+      title: article.title,
+      onTap: _navigateToNewsDetailsScreen,
     );
   }
 }

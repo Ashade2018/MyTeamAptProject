@@ -29,7 +29,7 @@ class NewsCard extends StatelessWidget {
                   top: 0,
                   left: 0,
                   right: 0,
-                  child: Image.asset(imageUrl, fit: BoxFit.cover)),
+                  child: Image.network(imageUrl, fit: BoxFit.cover)),
               Align(
                 alignment: Alignment.bottomCenter,
                 child: FractionallySizedBox(
