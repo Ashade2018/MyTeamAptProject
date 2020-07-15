@@ -37,7 +37,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 
-  Widget _buildAuthButton({@required String imageAsset, @required String label}) {
+  Widget _buildAuthButton(
+      {@required String imageAsset, @required String label}) {
     return FlatButton(
       padding: EdgeInsets.all(0),
       onPressed: null,
@@ -155,7 +156,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
         if (value.isEmpty) {
           return AppStrings.emailAddress + AppStrings.emptyFieldErrorMessage;
         }
-        if (!EmailValidator.validate(value)) {
+        if (!EmailValidator.validate(value.trim())) {
           return AppStrings.enterValidEmail;
         }
         return null;

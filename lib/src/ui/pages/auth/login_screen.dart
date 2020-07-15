@@ -32,7 +32,8 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget _buildAuthButton({@required String imageAsset, @required String label}) {
+  Widget _buildAuthButton(
+      {@required String imageAsset, @required String label}) {
     return FlatButton(
       padding: EdgeInsets.all(0),
       onPressed: () {},
@@ -150,7 +151,7 @@ class _LoginScreenState extends State<LoginScreen> {
             return AppStrings.loginEmailErrorMessage;
           }
 
-          if (!EmailValidator.validate(value)) {
+          if (!EmailValidator.validate(value.trim())) {
             return AppStrings.enterValidEmail;
           }
 
