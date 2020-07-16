@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:league_app/src/data/app_assets.dart';
 import 'package:league_app/src/data/app_colors.dart';
 import 'package:league_app/src/data/app_strings.dart';
+import 'package:league_app/src/models/article.dart';
 import 'package:league_app/src/ui/pages/main/tabs/league/news/news_details_screen.dart';
 import 'package:league_app/src/ui/widgets/news_card_widget.dart';
 import 'package:league_app/src/ui/widgets/tab_background_wrapper.dart';
@@ -15,22 +16,23 @@ class LatestTab extends StatefulWidget {
 class _LatestTabState extends State<LatestTab> {
   List<NewsCard> _listOfNewsCards;
 
-  void _navigateToNewsDetailsScreen() {
+  void _navigateToNewsDetailsScreen( @required Article article) {
     Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (BuildContext context) => NewsDetailsScreen()));
+            builder: (BuildContext context) => NewsDetailsScreen(article: article,)));
   }
 
   @override
   void initState() {
+    Article article;
     super.initState();
     _listOfNewsCards = List.generate(
       3,
       (_) => NewsCard(
         imageUrl: AppAssets.newsCardImageBackground,
         title: AppStrings.homeScreenNewsTitle,
-        onTap: _navigateToNewsDetailsScreen,
+        onTap: () => _navigateToNewsDetailsScreen(article),
       ),
     );
   }

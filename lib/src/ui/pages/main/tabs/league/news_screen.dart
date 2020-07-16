@@ -10,6 +10,8 @@ import 'package:league_app/src/models/article.dart';
 import 'package:league_app/src/services/articles_service.dart';
 
 class NewsScreen extends StatefulWidget {
+
+
   @override
   _NewsScreenState createState() => _NewsScreenState();
 }
@@ -20,12 +22,15 @@ class _NewsScreenState extends State<NewsScreen> {
 
   List<Article> _articleList = [];
 
-  void _navigateToNewsDetailsScreen() {
+  void _navigateToNewsDetailsScreen(BuildContext context , @required Article article) {
     Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (BuildContext context) => NewsDetailsScreen()));
+            builder: (context) => NewsDetailsScreen(article: article )));
   }
+
+
+
 
   @override
   void initState() {
@@ -101,7 +106,7 @@ class _NewsScreenState extends State<NewsScreen> {
     return NewsCard(
       imageUrl: article.image,
       title: article.title,
-      onTap: _navigateToNewsDetailsScreen,
+      onTap :() => _navigateToNewsDetailsScreen(context , article),
     );
   }
 }

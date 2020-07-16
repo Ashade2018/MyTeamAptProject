@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:league_app/src/data/app_assets.dart';
+import 'package:intl/intl.dart';
 import 'package:league_app/src/data/app_colors.dart';
 import 'package:league_app/src/data/app_strings.dart';
+import 'package:league_app/src/models/article.dart';
 
 class NewsDetailsScreen extends StatelessWidget {
+final Article article;
+
+  const NewsDetailsScreen({Key key,@required this.article}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +36,7 @@ class NewsDetailsScreen extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Text(
-        AppStrings.loremIpsum,
+        article.body,
         style: TextStyle(
           color: Colors.white,
         ),
@@ -42,8 +47,8 @@ class NewsDetailsScreen extends StatelessWidget {
   Widget _buildCoverImage() {
     return AspectRatio(
       aspectRatio: 5 / 3,
-      child: Image.asset(
-        AppAssets.newsCardImageBackground,
+      child: Image.network(
+        article.image,
         fit: BoxFit.fitWidth,
       ),
     );
@@ -57,7 +62,7 @@ class NewsDetailsScreen extends StatelessWidget {
           Align(
             alignment: Alignment.centerLeft,
             child: Text(
-              AppStrings.feature,
+             toBeginningOfSentenceCase(article.section),
               style: TextStyle(
                 color: AppColors.accentColor,
                 fontStyle: FontStyle.italic,
@@ -71,7 +76,7 @@ class NewsDetailsScreen extends StatelessWidget {
           Align(
             alignment: Alignment.centerLeft,
             child: Text(
-              AppStrings.homeScreenNewsTitle,
+              article.title,
               style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
@@ -83,12 +88,12 @@ class NewsDetailsScreen extends StatelessWidget {
           ),
           Align(
             alignment: Alignment.centerLeft,
-            child: Text(AppStrings.johnDoe,
+            child: Text(article.author,
                 style: TextStyle(color: Colors.white, fontSize: 14.0)),
           ),
           Align(
             alignment: Alignment.centerLeft,
-            child: Text(AppStrings.date,
+            child: Text( DateFormat('d, MMMM yyy').format(article.publishedDate),
                 style: TextStyle(color: Colors.white54, fontSize: 12.0)),
           ),
         ],
