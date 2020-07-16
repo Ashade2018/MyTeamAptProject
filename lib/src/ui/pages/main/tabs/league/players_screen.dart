@@ -13,7 +13,7 @@ class PlayersScreen extends StatefulWidget {
 
 class _PlayersScreenState extends State<PlayersScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  
+
   bool _isLoading = false;
   List<Player> _playerList = [];
 
@@ -129,29 +129,13 @@ class _PlayersScreenState extends State<PlayersScreen> {
             )
           ],
         ),
-        subtitle: Row(
-          children: <Widget>[
-            SizedBox(
-              height: 16,
-              child: AspectRatio(
-                aspectRatio: 4 / 3,
-                child: Image.asset(
-                  AppAssets.englandFlagImage,
-                ),
-              ),
-            ),
-            SizedBox(
-              width: 8,
-            ),
-            Text(
-              AppStrings.england,
-              style: TextStyle(
-                fontWeight: FontWeight.w200,
-                fontSize: 12,
-                color: Colors.white,
-              ),
-            )
-          ],
+        subtitle: Text(
+          AppStrings.england,
+          style: TextStyle(
+            fontWeight: FontWeight.w200,
+            fontSize: 12,
+            color: Colors.white,
+          ),
         ),
       ),
     );
