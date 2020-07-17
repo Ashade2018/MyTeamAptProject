@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:league_app/src/data/app_colors.dart';
 
+///This is used for the [BottomNavigationBar] tab pages.
+///It has a custom title widget and contains a
+///[SingleChildScrollView] that wraps around the child
+///widget
 class TabBackgroundWrapper extends StatelessWidget {
   final String title;
   final Widget body;
