@@ -30,6 +30,8 @@ dependencies:
   material_design_icons_flutter: ^4.0.5345
   email_validator: '^1.0.0'
   intl: ^0.16.1
+  assorted_layout_widgets: ^1.1.3
+
 
 
 

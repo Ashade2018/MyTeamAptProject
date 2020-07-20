@@ -5,6 +5,7 @@ import 'package:league_app/src/data/app_assets.dart';
 import 'package:league_app/src/models/player.dart';
 import 'package:league_app/src/services/players_service.dart';
 import 'package:http/http.dart';
+import 'package:league_app/src/ui/pages/main/tabs/league/players/player_details_screen.dart';
 
 class PlayersScreen extends StatefulWidget {
   @override
@@ -49,6 +50,15 @@ class _PlayersScreenState extends State<PlayersScreen> {
     }
   }
 
+  void _navigateToPlayerDetailsScreen(BuildContext context, Player player) {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => PlayerDetailsScreen(
+                  player: player,
+                )));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,9 +83,11 @@ class _PlayersScreenState extends State<PlayersScreen> {
                       padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0.0),
                       itemCount: _playerList.length,
                       itemBuilder: (context, index) {
+                        Player player = _playerList.elementAt(index);
+
                         return Column(
                           children: <Widget>[
-                            _buildPlayersListTile(),
+                            _buildPlayersListTile(player),
                             Divider(
                               color: Colors.white54,
                               height: 0.0,
@@ -93,12 +105,12 @@ class _PlayersScreenState extends State<PlayersScreen> {
         valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
       );
 
-  Widget _buildPlayersListTile() {
+  Widget _buildPlayersListTile(Player player) {
     return Material(
       color: Colors.transparent,
       child: ListTile(
         dense: true,
-        onTap: () {},
+        onTap: () => _navigateToPlayerDetailsScreen(context, player),
         contentPadding: EdgeInsets.only(left: 0, bottom: 0.0),
         leading: SizedBox(
           height: 50.0,

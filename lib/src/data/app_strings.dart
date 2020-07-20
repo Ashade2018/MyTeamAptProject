@@ -99,4 +99,11 @@ class AppStrings {
   static const String loginPasswordErrorMessage =
       'Password Field cannot be empty';
   static const String enterValidEmail = 'Email is not valid';
+  static const String personalDetails = 'Personal Details';
+  static const String age = 'Age';
+  static const String ageValue = '22';
+  static const String dateOfBirth = 'Date of Birth';
+  static const String dateOfBirthValue = '2 October 1997';
+  static const String nationality = 'Nationality';
+  static const String nationalityValue = 'English';
 }
