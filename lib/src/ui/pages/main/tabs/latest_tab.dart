@@ -16,11 +16,13 @@ class LatestTab extends StatefulWidget {
 class _LatestTabState extends State<LatestTab> {
   List<NewsCard> _listOfNewsCards;
 
-  void _navigateToNewsDetailsScreen( @required Article article) {
+  void _navigateToNewsDetailsScreen({@required Article article}) {
     Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (BuildContext context) => NewsDetailsScreen(article: article,)));
+            builder: (BuildContext context) => NewsDetailsScreen(
+                  article: article,
+                )));
   }
 
   @override
@@ -32,7 +34,7 @@ class _LatestTabState extends State<LatestTab> {
       (_) => NewsCard(
         imageUrl: AppAssets.newsCardImageBackground,
         title: AppStrings.homeScreenNewsTitle,
-        onTap: () => _navigateToNewsDetailsScreen(article),
+        onTap: () => _navigateToNewsDetailsScreen(article: article),
       ),
     );
   }
