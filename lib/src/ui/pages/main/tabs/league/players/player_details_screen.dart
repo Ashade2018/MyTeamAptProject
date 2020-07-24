@@ -1,5 +1,6 @@
 import 'package:assorted_layout_widgets/assorted_layout_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:league_app/src/data/app_assets.dart';
 import 'package:league_app/src/data/app_colors.dart';
 import 'package:league_app/src/data/app_strings.dart';
@@ -19,9 +20,7 @@ class PlayerDetailsScreen extends StatelessWidget {
           children: <Widget>[
             Expanded(
               flex: 4,
-              child: Image.asset(
-                AppAssets.tammyAbrahamImage,
-              ),
+              child: Image.network(player.imageUrl),
             ),
             SizedBox(
               width: 16.0,
@@ -30,7 +29,7 @@ class PlayerDetailsScreen extends StatelessWidget {
               flex: 6,
               child: Center(
                 child: Text(
-                  AppStrings.tammyAbraham,
+                  player.name,
                   textAlign: TextAlign.center,
                   style: TextStyle(color: Colors.white, fontSize: 20),
                 ),
@@ -91,15 +90,13 @@ class PlayerDetailsScreen extends StatelessWidget {
               SizedBox(height: 16.0),
               Divider(color: Colors.white),
               _buildPersonalDetails(
-                  title: AppStrings.age, detail: AppStrings.ageValue),
-              Divider(color: Colors.white),
-              _buildPersonalDetails(
-                  title: AppStrings.dateOfBirth,
-                  detail: AppStrings.dateOfBirthValue),
+                title: AppStrings.dateOfBirth,
+                detail: DateFormat('d, MMMM yyy').format(player.dateOfBirth),
+              ),
               Divider(color: Colors.white),
               _buildPersonalDetails(
                 title: AppStrings.nationality,
-                detail: AppStrings.nationalityValue,
+                detail: player.nationality,
               )
             ],
           ),
@@ -115,7 +112,7 @@ class PlayerDetailsScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: AppColors.backgroundColorElevated16,
         title: Text(
-          AppStrings.tammyAbraham,
+          player.name,
           style: TextStyle(color: Colors.white),
         ),
       ),
