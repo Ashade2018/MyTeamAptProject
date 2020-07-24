@@ -5,6 +5,7 @@ import 'package:league_app/src/data/app_colors.dart';
 import 'package:league_app/src/data/app_strings.dart';
 import 'package:league_app/src/models/team.dart';
 import 'package:intl/intl.dart';
+import 'package:league_app/src/util/date_time_util.dart';
 
 class TeamDetailScreen extends StatelessWidget {
   final Team team;
@@ -50,7 +51,7 @@ class TeamDetailScreen extends StatelessWidget {
   }
 
   Widget _buildOverviewCard() {
-    DateTime foundedOn = team.foundedOn;
+    DateTime foundedOnDate = team.foundedOn;
     return Card(
       color: AppColors.backgroundColorElevated16,
       margin: EdgeInsets.symmetric(horizontal: 0.0),
@@ -78,7 +79,7 @@ class TeamDetailScreen extends StatelessWidget {
             Divider(color: Colors.white),
             _buildOverviewInformation(
               title: AppStrings.foundedOn,
-              detail: DateFormat('d MMMM yyy').format(foundedOn),
+              detail: DateTimeUtil().getDateString(foundedOnDate),
             )
           ],
         ),
@@ -119,7 +120,7 @@ class TeamDetailScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: AppColors.backgroundColor,
         title: Text(
-          AppStrings.liverpool,
+          team.name,
           style: TextStyle(color: Colors.white),
         ),
       ),

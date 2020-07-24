@@ -3,11 +3,12 @@ import 'package:intl/intl.dart';
 import 'package:league_app/src/data/app_colors.dart';
 import 'package:league_app/src/data/app_strings.dart';
 import 'package:league_app/src/models/article.dart';
+import 'package:league_app/src/util/date_time_util.dart';
 
 class NewsDetailsScreen extends StatelessWidget {
-final Article article;
+  final Article article;
 
-  const NewsDetailsScreen({Key key,@required this.article}) : super(key: key);
+  const NewsDetailsScreen({Key key, @required this.article}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +63,7 @@ final Article article;
           Align(
             alignment: Alignment.centerLeft,
             child: Text(
-             toBeginningOfSentenceCase(article.section),
+              toBeginningOfSentenceCase(article.section),
               style: TextStyle(
                 color: AppColors.accentColor,
                 fontStyle: FontStyle.italic,
@@ -93,8 +94,10 @@ final Article article;
           ),
           Align(
             alignment: Alignment.centerLeft,
-            child: Text( DateFormat('d, MMMM yyy').format(article.publishedDate),
-                style: TextStyle(color: Colors.white54, fontSize: 12.0)),
+            child: Text(
+              DateTimeUtil().getDateString(article.publishedDate),
+              style: TextStyle(color: Colors.white54, fontSize: 12.0),
+            ),
           ),
         ],
       ),
