@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 import 'package:league_app/src/data/app_colors.dart';
 import 'package:league_app/src/data/app_strings.dart';
-import 'package:league_app/src/data/app_assets.dart';
 import 'package:league_app/src/models/player.dart';
 import 'package:league_app/src/services/players_service.dart';
-import 'package:http/http.dart';
 import 'package:league_app/src/ui/pages/main/tabs/league/players/player_details_screen.dart';
 
 class PlayersScreen extends StatefulWidget {
@@ -115,34 +114,15 @@ class _PlayersScreenState extends State<PlayersScreen> {
         leading: SizedBox(
           height: 50.0,
           width: 50.0,
-          child: Image.asset(
-            AppAssets.tammyAbrahamImage,
-          ),
+          child: Image.network(player.imageUrl),
         ),
-        title: Row(
-          children: <Widget>[
-            Text(
-              AppStrings.tammyAbraham,
-              style: TextStyle(
-                  fontSize: 12,
-                  color: Colors.white,
-                  fontWeight: FontWeight.w600),
-            ),
-            SizedBox(
-              width: 16,
-            ),
-            Text(
-              AppStrings.forward,
-              style: TextStyle(
-                fontWeight: FontWeight.w200,
-                fontSize: 12,
-                color: Colors.white,
-              ),
-            )
-          ],
+        title: Text(
+          player.name,
+          style: TextStyle(
+              fontSize: 12, color: Colors.white, fontWeight: FontWeight.w600),
         ),
         subtitle: Text(
-          AppStrings.england,
+          player.nationality,
           style: TextStyle(
             fontWeight: FontWeight.w200,
             fontSize: 12,
