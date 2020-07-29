@@ -1,10 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart';
 import 'package:league_app/src/data/app_assets.dart';
 import 'package:league_app/src/data/app_colors.dart';
 import 'package:league_app/src/data/app_strings.dart';
 import 'package:league_app/src/models/article.dart';
+import 'package:league_app/src/services/articles_service.dart';
 import 'package:league_app/src/ui/pages/main/tabs/league/news/news_details_screen.dart';
+import 'package:league_app/src/ui/pages/main/tabs/league/news_screen.dart';
 import 'package:league_app/src/ui/widgets/news_card_widget.dart';
 import 'package:league_app/src/ui/widgets/tab_background_wrapper.dart';
 
@@ -14,7 +17,13 @@ class LatestTab extends StatefulWidget {
 }
 
 class _LatestTabState extends State<LatestTab> {
-  List<NewsCard> _listOfNewsCards;
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  final int _numberOfArticlesToDisplay = 3;
+
+  bool _isLoadingArticles = false;
+
+  List<Article> _articleList = [];
 
   void _navigateToNewsDetailsScreen({@required Article article}) {
     Navigator.push(
@@ -25,18 +34,50 @@ class _LatestTabState extends State<LatestTab> {
                 )));
   }
 
+  void _navigateToNewsScreen({@required List<Article> articleList}) {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (BuildContext context) => NewsScreen(
+                  articleList: articleList,
+                )));
+  }
+
   @override
   void initState() {
-    Article article;
     super.initState();
-    _listOfNewsCards = List.generate(
-      3,
-      (_) => NewsCard(
-        imageUrl: AppAssets.newsCardImageBackground,
-        title: AppStrings.homeScreenNewsTitle,
-        onTap: () => _navigateToNewsDetailsScreen(article: article),
-      ),
-    );
+    _fetchArticles();
+  }
+
+  void _fetchArticles() async {
+    setState(() {
+      _isLoadingArticles = true;
+    });
+    try {
+      Client client = Client();
+      ArticlesService articlesService = ArticlesService(client);
+      _articleList = await articlesService.getArticles();
+
+      _articleList.sort((a, b) {
+        return a.publishedDate.compareTo(b.publishedDate);
+      });
+
+      setState(() {
+        _isLoadingArticles = false;
+      });
+    } catch (e) {
+      setState(() {
+        _isLoadingArticles = false;
+      });
+
+      final SnackBar snackBar = SnackBar(
+          content: Text(
+            'Could not get news articles.',
+            style: TextStyle(color: Colors.black),
+          ),
+          backgroundColor: Colors.white);
+      _scaffoldKey.currentState.showSnackBar(snackBar);
+    }
   }
 
   final List<Map<String, dynamic>> _tableTeamList = [
@@ -85,21 +126,62 @@ class _LatestTabState extends State<LatestTab> {
   @override
   Widget build(BuildContext context) {
     return TabBackgroundWrapper(
-        title: AppStrings.latest,
-        body: Column(children: <Widget>[
-          _buildNewsTopRow(),
-          ..._listOfNewsCards,
-          SizedBox(
-            height: 16.0,
-          ),
+      title: AppStrings.latest,
+      body: Column(
+        children: <Widget>[
+          _buildNewsSection(),
+          _isLoadingArticles || _articleList.isNotEmpty
+              ? SizedBox(
+                  height: 24.0,
+                )
+              : SizedBox.shrink(),
           _buildLeagueTableContainer(context),
           SizedBox(
             height: 16.0,
           ),
-        ]));
+        ],
+      ),
+    );
   }
 
-  Widget _buildNewsTopRow() {
+  Widget _buildNewsSection() {
+    return Column(
+      children: <Widget>[
+        _articleList.isNotEmpty
+            ? _buildNewsTopRow(articleList: _articleList)
+            : SizedBox.shrink(),
+        Stack(
+          children: <Widget>[
+            _isLoadingArticles
+                ? Center(
+                    child: _buildLoadingIndicator(),
+                  )
+                : Column(
+                    children: <Widget>[
+                      ..._articleList
+                          .take(_numberOfArticlesToDisplay)
+                          .map(
+                            (article) => NewsCard(
+                              imageUrl: article.image,
+                              title: article.title,
+                              onTap: () => _navigateToNewsDetailsScreen(
+                                  article: article),
+                            ),
+                          )
+                          .toList()
+                    ],
+                  ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget _buildLoadingIndicator() => CircularProgressIndicator(
+        valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+      );
+
+  Widget _buildNewsTopRow({@required List<Article> articleList}) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
@@ -111,12 +193,12 @@ class _LatestTabState extends State<LatestTab> {
           ),
         ),
         FlatButton(
-          onPressed: () {},
+          onPressed: () => _navigateToNewsScreen(articleList: articleList),
+          textColor: AppColors.accentColor,
           child: Text(
             AppStrings.showAll,
             style: TextStyle(
               fontSize: 12,
-              color: AppColors.accentColor,
             ),
           ),
         )

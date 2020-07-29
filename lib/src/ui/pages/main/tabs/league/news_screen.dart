@@ -10,6 +10,10 @@ import 'package:league_app/src/models/article.dart';
 import 'package:league_app/src/services/articles_service.dart';
 
 class NewsScreen extends StatefulWidget {
+  final List<Article> articleList;
+
+  const NewsScreen({Key key, this.articleList}) : super(key: key);
+
   @override
   _NewsScreenState createState() => _NewsScreenState();
 }
@@ -35,6 +39,11 @@ class _NewsScreenState extends State<NewsScreen> {
   }
 
   void _fetchArticles() async {
+    if (widget.articleList != null) {
+      _articleList = widget.articleList;
+      return;
+    }
+
     setState(() {
       _isLoading = true;
     });
