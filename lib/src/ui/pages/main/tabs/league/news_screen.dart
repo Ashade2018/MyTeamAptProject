@@ -1,13 +1,12 @@
-import 'package:http/http.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:league_app/src/data/app_assets.dart';
+import 'package:http/http.dart';
 import 'package:league_app/src/data/app_colors.dart';
 import 'package:league_app/src/data/app_strings.dart';
-import 'package:league_app/src/ui/pages/main/tabs/league/news/news_details_screen.dart';
-import 'package:league_app/src/ui/widgets/news_card_widget.dart';
 import 'package:league_app/src/models/article.dart';
 import 'package:league_app/src/services/articles_service.dart';
+import 'package:league_app/src/ui/pages/main/tabs/league/news/news_details_screen.dart';
+import 'package:league_app/src/ui/widgets/news_card.dart';
 
 class NewsScreen extends StatefulWidget {
   final List<Article> articleList;

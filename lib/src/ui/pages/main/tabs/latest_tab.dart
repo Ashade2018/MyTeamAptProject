@@ -7,6 +7,7 @@ import 'package:league_app/src/data/app_strings.dart';
 import 'package:league_app/src/models/article.dart';
 import 'package:league_app/src/services/articles_service.dart';
 import 'package:league_app/src/ui/pages/main/tabs/league/news/news_details_screen.dart';
+import 'package:league_app/src/ui/widgets/news_card.dart';
 import 'package:league_app/src/ui/pages/main/tabs/league/news_screen.dart';
 import 'package:league_app/src/ui/widgets/news_card_widget.dart';
 import 'package:league_app/src/ui/widgets/tab_background_wrapper.dart';
