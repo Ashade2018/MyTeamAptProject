@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:league_app/src/data/app_colors.dart';
 import 'package:league_app/src/data/app_strings.dart';
 import 'package:league_app/src/models/team.dart';
-import 'package:intl/intl.dart';
 import 'package:league_app/src/util/date_time_util.dart';
 
 class TeamDetailScreen extends StatelessWidget {
