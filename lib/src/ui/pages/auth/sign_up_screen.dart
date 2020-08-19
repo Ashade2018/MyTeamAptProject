@@ -7,6 +7,8 @@ import 'package:league_app/src/ui/pages/main/main_screen.dart';
 import 'package:http/http.dart';
 import 'package:league_app/src/services/sign_up_service.dart';
 
+import '../../../data/app_assets.dart';
+
 class SignUpScreen extends StatefulWidget {
   @override
   _SignUpScreenState createState() => _SignUpScreenState();
@@ -83,7 +85,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             flex: 7,
             child: _buildAuthButton(
                 label: AppStrings.facebook,
-                imageAsset: 'assets/facebook_icon.png'),
+                imageAsset: AppAssets.facebookIcon),
           ),
           Expanded(
             child: SizedBox(),
@@ -92,7 +94,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               flex: 7,
               child: _buildAuthButton(
                   label: AppStrings.google,
-                  imageAsset: 'assets/google_icon.png'))
+                  imageAsset: AppAssets.googleIcon))
         ],
       ),
     );
