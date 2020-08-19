@@ -9,6 +9,8 @@ import 'package:league_app/src/data/app_colors.dart';
 import 'package:league_app/src/services/login_service.dart';
 import 'package:league_app/src/ui/pages/main/main_screen.dart';
 
+import '../../../data/app_assets.dart';
+
 class LoginScreen extends StatefulWidget {
   @override
   _LoginScreenState createState() => _LoginScreenState();
@@ -78,7 +80,7 @@ class _LoginScreenState extends State<LoginScreen> {
             flex: 7,
             child: _buildAuthButton(
                 label: AppStrings.facebook,
-                imageAsset: 'assets/facebook_icon.png'),
+                imageAsset:AppAssets.facebookIcon ),
           ),
           Expanded(
             child: SizedBox(),
@@ -87,7 +89,7 @@ class _LoginScreenState extends State<LoginScreen> {
               flex: 7,
               child: _buildAuthButton(
                   label: AppStrings.google,
-                  imageAsset: 'assets/google_icon.png'))
+                  imageAsset:AppAssets.googleIcon ))
         ],
       ),
     );
