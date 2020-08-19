@@ -1,3 +1,5 @@
+import 'package:flutter/src/widgets/framework.dart';
+
 class AppStrings {
   static const String bigLeague = 'Big League';
   static const String appTitle = bigLeague;
