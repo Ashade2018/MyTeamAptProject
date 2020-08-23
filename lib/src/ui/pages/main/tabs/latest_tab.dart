@@ -218,15 +218,17 @@ class _LatestTabState extends State<LatestTab> {
               _buildTableTitle(),
               SizedBox(height: 16.0),
               _buildTableTopBar(),
-              ..._tableTeamList.map(
-                (team) => _buildLeagueTableItem(
-                    imageAsset: team['imageAsset'],
-                    played: team['played'],
-                    goalDifference: team['goalDifference'],
-                    points: team['points'],
-                    clubName: team['club'],
-                    position: team['position']),
-              ),
+              ..._tableTeamList
+                  .map(
+                    (team) => _buildLeagueTableItem(
+                        imageAsset: team['imageAsset'],
+                        played: team['played'],
+                        goalDifference: team['goalDifference'],
+                        points: team['points'],
+                        clubName: team['club'],
+                        position: team['position']),
+                  )
+                  .toList(),
               _buildFullTableButton()
             ],
           ),

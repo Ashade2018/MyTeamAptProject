@@ -5,6 +5,7 @@ import 'package:league_app/src/ui/pages/main/tabs/league/fixtures_screen.dart';
 import 'package:league_app/src/ui/pages/main/tabs/league/news_screen.dart';
 import 'package:league_app/src/ui/pages/main/tabs/league/players_screen.dart';
 import 'package:league_app/src/ui/pages/main/tabs/league/sponsors_screen.dart';
+import 'package:league_app/src/ui/pages/main/tabs/league/table_screen.dart';
 import 'package:league_app/src/ui/pages/main/tabs/league/teams_screen.dart';
 import 'package:league_app/src/ui/widgets/tab_background_wrapper.dart';
 
@@ -23,7 +24,12 @@ class LeagueTab extends StatelessWidget {
         SizedBox(
           height: 8.0,
         ),
-        _buildLeagueItemTile(title: AppStrings.table, onTap: () {}),
+        _buildLeagueItemTile(
+            title: AppStrings.table,
+            onTap: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => TableScreen()));
+            }),
       ],
     );
   }
