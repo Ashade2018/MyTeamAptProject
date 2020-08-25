@@ -19,7 +19,7 @@ class PlayerDetailsScreen extends StatelessWidget {
           children: <Widget>[
             Expanded(
               flex: 4,
-              child: Image.network(player.imageUrl),
+              child: Image.network(player.playerInfo.photo),
             ),
             SizedBox(
               width: 16.0,
@@ -28,7 +28,7 @@ class PlayerDetailsScreen extends StatelessWidget {
               flex: 6,
               child: Center(
                 child: Text(
-                  player.name,
+                  player.playerInfo.name,
                   textAlign: TextAlign.center,
                   style: TextStyle(color: Colors.white, fontSize: 20),
                 ),
@@ -90,12 +90,13 @@ class PlayerDetailsScreen extends StatelessWidget {
               Divider(color: Colors.white),
               _buildPersonalDetails(
                 title: AppStrings.dateOfBirth,
-                detail: DateTimeUtil().getDateString(player.dateOfBirth),
+                detail:
+                    DateTimeUtil().getDateString(player.playerInfo.birth.date),
               ),
               Divider(color: Colors.white),
               _buildPersonalDetails(
                 title: AppStrings.nationality,
-                detail: player.nationality,
+                detail: player.playerInfo.nationality,
               )
             ],
           ),
@@ -111,7 +112,7 @@ class PlayerDetailsScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: AppColors.backgroundColorElevated16,
         title: Text(
-          player.name,
+          player.playerInfo.name,
           style: TextStyle(color: Colors.white),
         ),
       ),

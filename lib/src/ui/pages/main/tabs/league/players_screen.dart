@@ -105,6 +105,11 @@ class _PlayersScreenState extends State<PlayersScreen> {
       );
 
   Widget _buildPlayersListTile(Player player) {
+    final PlayerInfo playerInfo = player.playerInfo;
+    final String playerPhoto = playerInfo.photo;
+    final String playerName = playerInfo.name;
+    final String playerNationality = playerInfo.nationality;
+
     return Material(
       color: Colors.transparent,
       child: ListTile(
@@ -114,15 +119,15 @@ class _PlayersScreenState extends State<PlayersScreen> {
         leading: SizedBox(
           height: 50.0,
           width: 50.0,
-          child: Image.network(player.imageUrl),
+          child: Image.network(playerPhoto),
         ),
         title: Text(
-          player.name,
+          playerName,
           style: TextStyle(
               fontSize: 12, color: Colors.white, fontWeight: FontWeight.w600),
         ),
         subtitle: Text(
-          player.nationality,
+          playerNationality,
           style: TextStyle(
             fontWeight: FontWeight.w200,
             fontSize: 12,
