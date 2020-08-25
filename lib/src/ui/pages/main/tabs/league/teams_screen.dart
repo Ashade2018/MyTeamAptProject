@@ -18,9 +18,14 @@ class _TeamsScreenState extends State<TeamsScreen> {
   bool _isLoading = false;
   List<Team> _teamList = [];
 
-  void _navigateToTeamDetailsScreen({BuildContext context, @required Team team}) {
+  void _navigateToTeamDetailsScreen(
+      {BuildContext context, @required Team team}) {
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => TeamDetailScreen(team: team,)));
+        context,
+        MaterialPageRoute(
+            builder: (context) => TeamDetailScreen(
+                  team: team,
+                )));
   }
 
   @override
@@ -47,7 +52,7 @@ class _TeamsScreenState extends State<TeamsScreen> {
 
       final SnackBar snackBar = SnackBar(
           content: Text(
-            'Could not get teams.',
+            AppStrings.teamsErrorMessage,
             style: TextStyle(color: Colors.black),
           ),
           backgroundColor: Colors.white);
@@ -102,7 +107,8 @@ class _TeamsScreenState extends State<TeamsScreen> {
         Material(
           color: Colors.transparent,
           child: ListTile(
-            onTap: () => _navigateToTeamDetailsScreen(context: context, team: team),
+            onTap: () =>
+                _navigateToTeamDetailsScreen(context: context, team: team),
             contentPadding: EdgeInsets.only(left: 0),
             leading: SizedBox(
               height: 30.0,

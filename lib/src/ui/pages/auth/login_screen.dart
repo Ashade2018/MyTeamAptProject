@@ -79,8 +79,7 @@ class _LoginScreenState extends State<LoginScreen> {
           Expanded(
             flex: 7,
             child: _buildAuthButton(
-                label: AppStrings.facebook,
-                imageAsset:AppAssets.facebookIcon ),
+                label: AppStrings.facebook, imageAsset: AppAssets.facebookIcon),
           ),
           Expanded(
             child: SizedBox(),
@@ -88,8 +87,7 @@ class _LoginScreenState extends State<LoginScreen> {
           Expanded(
               flex: 7,
               child: _buildAuthButton(
-                  label: AppStrings.google,
-                  imageAsset:AppAssets.googleIcon ))
+                  label: AppStrings.google, imageAsset: AppAssets.googleIcon))
         ],
       ),
     );
@@ -289,7 +287,7 @@ class _LoginScreenState extends State<LoginScreen> {
     } else {
       final SnackBar snackBar = SnackBar(
           content: Text(
-            'Could not login.',
+            AppStrings.loginErrorMessage,
             style: TextStyle(color: Colors.black),
           ),
           backgroundColor: Colors.white);

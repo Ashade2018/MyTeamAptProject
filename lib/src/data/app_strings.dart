@@ -104,4 +104,10 @@ class AppStrings {
   static const String dateOfBirthValue = '2 October 1997';
   static const String nationality = 'Nationality';
   static const String nationalityValue = 'English';
+  static const String resetPasswordErrorMessage = 'Could not reset password.';
+  static const String loginErrorMessage = 'Could not login.';
+  static const String newsErrorMessage = 'Could not get news articles.';
+  static const String playersErrorMessage =  'Could not get players.';
+  static const String tableErrorMessage =  'Could not get table list';
+  static const String teamsErrorMessage =  'Could not get teams.';
 }

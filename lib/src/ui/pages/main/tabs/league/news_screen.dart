@@ -60,7 +60,7 @@ class _NewsScreenState extends State<NewsScreen> {
 
       final SnackBar snackBar = SnackBar(
           content: Text(
-            'Could not get news articles.',
+            AppStrings.newsErrorMessage,
             style: TextStyle(color: Colors.black),
           ),
           backgroundColor: Colors.white);

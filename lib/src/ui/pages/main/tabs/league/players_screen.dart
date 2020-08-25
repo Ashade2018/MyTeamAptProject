@@ -41,7 +41,7 @@ class _PlayersScreenState extends State<PlayersScreen> {
 
       final SnackBar snackBar = SnackBar(
           content: Text(
-            'Could not get players.',
+           AppStrings.playersErrorMessage,
             style: TextStyle(color: Colors.black),
           ),
           backgroundColor: Colors.white);

@@ -41,7 +41,7 @@ class _TableScreenState extends State<TableScreen> {
 
       final SnackBar snackBar = SnackBar(
           content: Text(
-            'Could not get table list',
+            AppStrings.tableErrorMessage,
             style: TextStyle(color: Colors.black),
           ),
           backgroundColor: Colors.white);

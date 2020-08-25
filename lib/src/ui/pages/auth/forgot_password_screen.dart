@@ -88,7 +88,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
     } else {
       final SnackBar snackBar = SnackBar(
           content: Text(
-            'Could not reset password.',
+            AppStrings.resetPasswordErrorMessage,
             style: TextStyle(color: Colors.black),
           ),
           backgroundColor: Colors.white);

@@ -73,7 +73,7 @@ class _LatestTabState extends State<LatestTab> {
 
       final SnackBar snackBar = SnackBar(
           content: Text(
-            'Could not get news articles.',
+            AppStrings.newsErrorMessage,
             style: TextStyle(color: Colors.black),
           ),
           backgroundColor: Colors.white);
