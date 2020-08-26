@@ -3,6 +3,7 @@ import 'package:league_app/src/services/reset_password_service.dart';
 import 'package:mockito/mockito.dart';
 import 'package:test/test.dart';
 import 'package:http/http.dart';
+import '../data/test_strings.dart';
 
 class MockClient extends Mock implements Client {}
 
@@ -14,8 +15,8 @@ void main() {
       MockClient mockClient = MockClient();
 
       String url = AppEndpoints.resetPasswordEndpoint;
-      String successResponseBody =
-          '''{"success": true,"error_message": null}''';
+      final String successResponseBody =
+          TestStrings.resetPasswordServiceTestSuccessResponseBody;
       Response successResponse = Response(successResponseBody, 200);
 
       when(mockClient.get(url)).thenAnswer((_) {
@@ -36,8 +37,8 @@ void main() {
       MockClient mockClient = MockClient();
 
       String url = AppEndpoints.resetPasswordEndpoint;
-      String errorResponseBody =
-          '''{"success": false,"error_message": "Could not reset password"}''';
+      final String errorResponseBody =
+          TestStrings.resetPasswordServiceTestErrorResponseBody;
       Response errorResponse = Response(errorResponseBody, 200);
 
       when(mockClient.get(url)).thenAnswer((_) {

@@ -3,6 +3,7 @@ import 'package:league_app/src/services/login_service.dart';
 import 'package:mockito/mockito.dart';
 import 'package:test/test.dart';
 import 'package:http/http.dart';
+import '../data/test_strings.dart';
 
 class MockClient extends Mock implements Client {}
 
@@ -12,8 +13,8 @@ void main() {
         () async {
       MockClient mockClient = MockClient();
       String url = AppEndpoints.loginEndpoint;
-      String successResponseBody =
-          '''{"success": true,"error_message": null}''';
+      final String successResponseBody =
+          TestStrings.loginServiceTestSuccessResponseBody;
       Response successResponse = Response(successResponseBody, 200);
 
       when(mockClient.get(url)).thenAnswer((_) {
@@ -31,8 +32,8 @@ void main() {
         () async {
       MockClient mockClient = MockClient();
       String url = AppEndpoints.loginEndpoint;
-      String errorResponseBody =
-          '''{"success": false,"error_message": "Could not login"}''';
+      final String errorResponseBody =
+          TestStrings.loginServiceTestErrorResponseBody;
       Response errorResponse = Response(errorResponseBody, 200);
 
       when(mockClient.get(url)).thenAnswer((_) {

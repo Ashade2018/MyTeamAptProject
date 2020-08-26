@@ -4,6 +4,7 @@ import 'package:league_app/src/services/table_service.dart';
 import 'package:mockito/mockito.dart';
 import 'package:http/http.dart';
 import 'package:test/test.dart';
+import '../data/test_strings.dart';
 
 class MockClient extends Mock implements Client {}
 
@@ -14,52 +15,8 @@ void main() {
         () async {
       MockClient mockClient = MockClient();
       String url = AppEndpoints.tableEndPoint;
-      String successResponseBody = """{
-   "api":{
-      "results":1,
-      "standings":[
-         [
-            {
-               "rank":20,
-               "team_id":37,
-               "teamName":"Huddersfield",
-               "logo":"https://media.api-sports.io/football/teams/37.png",
-               "group":"Premier League",
-               "forme":"DDLLL",
-               "status":"",
-               "description":"Relegation - Championship",
-               "all":{
-                  "matchsPlayed":38,
-                  "win":3,
-                  "draw":7,
-                  "lose":28,
-                  "goalsFor":22,
-                  "goalsAgainst":76
-               },
-               "home":{
-                  "matchsPlayed":19,
-                  "win":2,
-                  "draw":3,
-                  "lose":14,
-                  "goalsFor":10,
-                  "goalsAgainst":31
-               },
-               "away":{
-                  "matchsPlayed":19,
-                  "win":1,
-                  "draw":4,
-                  "lose":14,
-                  "goalsFor":12,
-                  "goalsAgainst":45
-               },
-               "goalsDiff":-54,
-               "points":16,
-               "lastUpdate":"2019-05-12"
-            }
-         ]
-      ]
-   }
-} """;
+      final String successResponseBody =
+          TestStrings.tableServiceTestSuccessResponseBody;
       Response successResponse = Response(successResponseBody, 200);
       when(mockClient.get(url))
           .thenAnswer((_) async => Future.value(successResponse));

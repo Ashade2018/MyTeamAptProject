@@ -3,6 +3,7 @@ import 'package:league_app/src/services/sign_up_service.dart';
 import 'package:mockito/mockito.dart';
 import 'package:test/test.dart';
 import 'package:http/http.dart';
+import '../data/test_strings.dart';
 
 class MockClient extends Mock implements Client {}
 
@@ -12,8 +13,8 @@ void main() {
         () async {
       MockClient mockClient = MockClient();
       String url = AppEndpoints.signUpEndpoint;
-      String successResponseBody =
-          '''{"success": true,"error_message": null}''';
+      final String successResponseBody =
+          TestStrings.signUpServiceTestSuccessResponseBody;
       Response successResponse = Response(successResponseBody, 200);
       when(mockClient.get(url)).thenAnswer((_) async {
         return Future.value(successResponse);
@@ -47,7 +48,8 @@ void main() {
       () async {
     MockClient mockClient = MockClient();
     String url = AppEndpoints.signUpEndpoint;
-    String errorResponseBody = "";
+    final String errorResponseBody =
+        TestStrings.signUpServiceTestErrorResponseBody;
     Response errorResponse = Response(errorResponseBody, 400);
     when(mockClient.get(url)).thenAnswer((_) async {
       return Future.value(errorResponse);
