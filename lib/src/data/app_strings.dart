@@ -107,7 +107,9 @@ class AppStrings {
   static const String resetPasswordErrorMessage = 'Could not reset password.';
   static const String loginErrorMessage = 'Could not login.';
   static const String newsErrorMessage = 'Could not get news articles.';
-  static const String playersErrorMessage =  'Could not get players.';
-  static const String tableErrorMessage =  'Could not get table list';
-  static const String teamsErrorMessage =  'Could not get teams.';
+  static const String playersErrorMessage = 'Could not get players.';
+  static const String tableErrorMessage = 'Could not get table list';
+  static const String teamsErrorMessage = 'Could not get teams.';
+  static const String winter = 'Winter';
+  static const String summer = 'Summer';
 }
