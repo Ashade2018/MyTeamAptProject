@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:league_app/src/data/app_colors.dart';
 import 'package:league_app/src/data/app_strings.dart';
 import 'package:flutter_vector_icons/flutter_vector_icons.dart';
+import 'package:league_app/src/ui/pages/main/tabs/league/season/season_details_screen.dart';
 
 class SeasonsScreen extends StatelessWidget {
   final List<String> _seasonList = [
@@ -29,7 +30,7 @@ class SeasonsScreen extends StatelessWidget {
             String seasonName = _seasonList[index];
             return Column(
               children: <Widget>[
-                _buildSeasonsListTile(seasonName: seasonName),
+                _buildSeasonsListTile(seasonName: seasonName, context: context),
                 Divider(
                   color: Colors.white54,
                   height: 0.0,
@@ -42,12 +43,20 @@ class SeasonsScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildSeasonsListTile({@required String seasonName}) {
+  Widget _buildSeasonsListTile(
+      {@required String seasonName, @required BuildContext context}) {
     return Material(
       color: Colors.transparent,
       child: ListTile(
         dense: true,
-        onTap: () {},
+        onTap: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => SeasonDetailsScreen(
+                        seasonName: seasonName,
+                      )));
+        },
         contentPadding: EdgeInsets.symmetric(horizontal: 0.0, vertical: 4.0),
         leading: SizedBox(
             height: 50.0,

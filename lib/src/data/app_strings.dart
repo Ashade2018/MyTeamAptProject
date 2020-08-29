@@ -110,6 +110,9 @@ class AppStrings {
   static const String playersErrorMessage = 'Could not get players.';
   static const String tableErrorMessage = 'Could not get table list';
   static const String teamsErrorMessage = 'Could not get teams.';
-  static const String winter = 'Winter';
-  static const String summer = 'Summer';
+  static const String winterSeason = 'Winter Season';
+  static const String seasonDetails = 'Season Details';
+  static const String startDate = 'Start Date';
+  static const String endDate = 'End Date';
+  static const String seasonDetailsDate = '2 October 2020';
 }
